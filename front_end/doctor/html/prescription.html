@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="../css/prescription.css">
+
+        <title>Prescription</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="container">
+                <div id="navbar">
+                    <div id="nv_icon">
+                        <img src="../resources/doctor.png">
+                    </div>
+                    <div id="nv_items">
+                        <li class="no_select"><a href="#" class="list_styling">Home</a></li>
+                        <li class="no_select"><a href="#" class="list_styling">Prescription</a></li>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                <form>
+                    <div id="user_info">
+                        <div id="left_panel">
+                            <!-- department -->
+                            <input type="text" name="department">
+                            <!-- patient_name -->
+                            <input type="text" name="patient_name">
+                        </div>
+                        <div id="right_panel">
+                            <div class="rp_group">
+                                <!-- gender -->
+                                <input list="genders" name="gender"required>
+                                <datalist id="genders"></datalist>
+                                <!-- age -->
+                                <div class="mini_group">
+                                    <input type="number" name="age">
+                                    <input list="age_types" name="age_type" id="age_type">
+                                    <datalist id="age_types"></datalist>
+                                </div>
+                                <!-- blood_group -->
+                                <input list="blood_groups" name="blood_group">
+                                <datalist id="blood_groups" required></datalist>
+                                <!-- weight -->
+                                <div class="mini_group">
+                                    <input type="number" id="weight" name="weight">
+                                    <label for="weight">KG</label>
+                                </div>
+                            </div>
+                            <div class="rp_group">
+                                <!-- payment -->
+                                <div class="mini_group">
+                                    <input type="number" name="paid">
+                                    <input list="currencies" name="currency">
+                                    <datalist id="currencies"></datalist>
+                                </div>
+                                <!-- date -->
+                                <input type="date" name="date" placeholder="Date" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="result">
+                        <div id="left_section">
+                            <!-- Blood Pressure -->
+                            <input type="text" name="bp">
+                            <!-- Pulse -->
+                            <input type="number" name="pulse">
+                            <!-- complaint -->
+                            <div class="mini_group">
+                                <label for="complaint">Complaint</label>
+                                <textarea name="complaint" id="complaint"></textarea>
+                            </div>
+                            <!-- examinations -->
+                            <div class="mini_group">
+                                <label for="examinations">Examinations</label>
+                                <textarea name="examinations" id="examinations"></textarea>
+                            </div>
+                            <!-- diagnosis -->
+                            <div class="mini_group">
+                                <label for="diagnosis">Diagnosis</label>
+                                <textarea name="diagnosis" id="diagnosis"></textarea>
+                            </div>
+                            <!-- investigation -->
+                            <div class="mini_group">
+                                <label for="investigation">Investigation</label>
+                                <textarea name="investigation" id="investigation"></textarea>
+                            </div>
+                        </div>
+                        <div id="right_section">
+                            <div class="mini_group">
+                                <!-- medicine -->
+                                <input list="medicines" name="medicine">
+                                <datalist id="medicines"></datalist>
+                                <!-- instructions -->
+                                <input list="instructions" name="instruction">
+                                <datalist id="instructions"></datalist>
+                                <!-- durations -->
+                                <input list="durations" name="duration">
+                                <datalist id="durations"></datalist>
+                                <!-- add_medicine -->
+                                <img id="add_med" src="../resources/add.png">
+                            </div>
+                            <div id="med_tb">
+                                <!-- table -->
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>SL No.</th>
+                                            <th>Medicine</th>
+                                            <th>Instruction</th>
+                                            <th>Duration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div id="others">
+                                <div id="others_left">
+                                    <div id="adv_btn">
+                                        <!-- advices -->
+                                        <input list="advices" name="adv">
+                                        <datalist id="advices"></datalist>
+                                        <!-- add_advice -->
+                                        <img id="add_advice" src="../resources/add.png">
+                                    </div>
+                                    <textarea name="advice"></textarea>
+                                </div>
+                                <div id="others_right">
+                                    <!-- follow_up -->
+                                    <input list="follow_ups" name="follow_up">
+                                    <datalist id="follow_ups"></datalist>
+                                    <!-- submit -->
+                                    <button type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer></footer>
+    </body>
+
+    <script src="../js/prescription.js"></script>
+    <script>
+        prescription = new Prescription()
+        prescription.set_data()
+        
+        prescription.complaint.addEventListener("keyup", prescription.textarea_bullet)
+        prescription.examinations.addEventListener("keyup", prescription.textarea_bullet)
+        prescription.diagnosis.addEventListener("keyup", prescription.textarea_bullet)
+        prescription.investigation.addEventListener("keyup", prescription.textarea_bullet)
+
+        prescription.add_med.addEventListener("click", prescription.add_medicine)
+        prescription.body.addEventListener("click", prescription.rem_medicine, false)
+ 
+        prescription.add_adv.addEventListener("click", prescription.add_advice)
+        prescription.advice.addEventListener("keyup", prescription.textarea_bullet)
+
+        prescription.submit_btn.addEventListener("click", prescription.parse_form)
+    </script>
+</html>
