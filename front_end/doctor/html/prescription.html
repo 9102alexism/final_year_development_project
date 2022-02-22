@@ -9,7 +9,6 @@
 
         <title>Prescription</title>
     </head>
-
     <body>
         <header>
             <div class="container">
@@ -24,7 +23,6 @@
                 </div>
             </div>
         </header>
-
         <main>
             <div class="container">
                 <form>
@@ -103,8 +101,10 @@
                                 <input list="instructions" name="instruction">
                                 <datalist id="instructions"></datalist>
                                 <!-- durations -->
-                                <input list="durations" name="duration">
-                                <datalist id="durations"></datalist>
+                                <div id="sub_mini_group">
+                                    <input type="number" name="duration" id="duration">
+                                    <label for="duration">Day/s</label>
+                                </div>
                                 <!-- add_medicine -->
                                 <img id="add_med" src="../resources/add.png">
                             </div>
@@ -146,7 +146,6 @@
                 </form>
             </div>
         </main>
-
         <footer></footer>
     </body>
 

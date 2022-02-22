@@ -8,7 +8,6 @@ class Prescription{
     add_adv
     advice
     submit_btn
-
     constructor(){
         this.new_date = new Date()
         this.form = document.forms[0]
@@ -37,7 +36,6 @@ class Prescription{
         this.medicine = this.form["medicine"]
         this.instruction = this.form["instruction"]
         this.duration = this.form["duration"]
-
         
         this.adv = this.form["adv"]
         this.add_adv = document.getElementById("add_advice")
@@ -46,7 +44,6 @@ class Prescription{
         this.follow_up = this.form["follow_up"]
         this.submit_btn = document.getElementsByTagName("button")[0]
     }
-
     set_data(){
         // department
         var department_available = ["Dermatology"]
@@ -142,13 +139,6 @@ class Prescription{
         }
         this.instruction.placeholder = "Instruction"
 
-        var data_available = ["5days", "1month"]
-        var duration_list = document.getElementById("durations")
-        for(var duration of data_available){
-            var opt = document.createElement("option")
-            opt.value = duration
-            duration_list.appendChild(opt)
-        }
         this.duration.placeholder = "Duration"
 
         var data_available = ["Don't stay on shower for long", "Drink hot water when necessary"]
@@ -160,7 +150,7 @@ class Prescription{
         }
         this.adv.placeholder = "Advice"
 
-        var data_available = ["1week", "1month"]
+        var data_available = ["1 week", "1 month"]
         var follow_up_list = document.getElementById("follow_ups")
         for(var follow_up of data_available){
             var opt = document.createElement("option")
@@ -169,7 +159,6 @@ class Prescription{
         }
         this.follow_up.placeholder = "Follow Up"
     }
-
     textarea_bullet(event){
         // special_thanks => https://stackoverflow.com/a/57042927
         var bullet = "\u2022"
@@ -185,35 +174,37 @@ class Prescription{
             target.selectionEnd = selectionStart + `${bullet} `.length
         }
     }
-
     add_medicine(){
         var form = document.forms[0]
 
         if(form["medicine"].value){
             if(form["instruction"].value){
                 if(form["duration"].value){
-                    var form = document.forms[0]
-                    var table = form.getElementsByTagName("table")[0]
-                    var row_count = table.tBodies[0].rows.length + 1
+                    if(parseInt(form["duration"].value) > 0 && parseInt(form["duration"].value) <= 365){
+                        var form = document.forms[0]
+                        var table = form.getElementsByTagName("table")[0]
+                        var row_count = table.tBodies[0].rows.length + 1
 
-                    var my_table = form.getElementsByTagName("tbody")[0]
-                    var row = my_table.insertRow()
+                        var my_table = form.getElementsByTagName("tbody")[0]
+                        var row = my_table.insertRow()
 
-                    var cell_1 = row.insertCell(0)
-                    var cell_2 = row.insertCell(1)
-                    var cell_3 = row.insertCell(2)
-                    var cell_4 = row.insertCell(3)
-                    var cell_5 = row.insertCell(4)
+                        var cell_1 = row.insertCell(0)
+                        var cell_2 = row.insertCell(1)
+                        var cell_3 = row.insertCell(2)
+                        var cell_4 = row.insertCell(3)
+                        var cell_5 = row.insertCell(4)
 
-                    cell_1.innerHTML = row_count
-                    cell_2.innerHTML = form["medicine"].value
-                    cell_3.innerHTML = form["instruction"].value
-                    cell_4.innerHTML = form["duration"].value 
-                    cell_5.innerHTML = `<img class="rem_med" src="../resources/sub.png">`
+                        cell_1.innerHTML = row_count
+                        cell_2.innerHTML = form["medicine"].value
+                        cell_3.innerHTML = form["instruction"].value
+                        cell_4.innerHTML = form["duration"].value 
+                        cell_5.innerHTML = `<img class="rem_med" src="../resources/sub.png">`
 
-                    form["medicine"].value = ""
-                    form["instruction"].value = ""
-                    form["duration"].value = ""
+                        form["medicine"].value = ""
+                        form["instruction"].value = ""
+                        form["duration"].value = ""
+                    }
+                    else alert("Duration Range 0-365"); form["duration"].focus()
                 }
                 else form["duration"].focus()
             }
@@ -221,13 +212,11 @@ class Prescription{
         }
         else form["medicine"].focus()
     }
-
     rem_medicine(event){
         if (event.target.className === "rem_med"){
             event.target.closest("tr").remove()
         }
     }
-
     add_advice(event){
         var bullet = "\u2022"
 
@@ -244,7 +233,6 @@ class Prescription{
             adv.value = ""
         }
     }
-
     static name_validation(_name){
         if(_name.value){
             var regex = /^[A-Z][a-zA-Z]{3,}(?: [A-Z][a-zA-Z]*){0,2}$/
@@ -262,7 +250,6 @@ class Prescription{
             return null
         }
     }
-    
     static gender_validation(_gender){
         if(_gender.value){
             if(_gender.value != "Male" && _gender.value != "Female"){
@@ -279,7 +266,6 @@ class Prescription{
             return null
         }
     }
-
     static age_validation(_age){
         if(parseInt(_age.value)){
             var value = parseInt(_age.value)
@@ -297,7 +283,6 @@ class Prescription{
             return null
         }
     }
-
     static age_type_validation(_type){
         if(_type.value){
             if(_type.value != "M" && _type.value != "Y"){
@@ -314,7 +299,6 @@ class Prescription{
             return null
         }
     }
-
     static blood_group_validation(_group){
         if(_group.value){
             if(_group.value != "A+" && _group.value != "A-" && _group.value != "B+" && _group.value != "B-" && _group.value != "O+" && _group.value != "O-" && _group.value != "AB+" && _group.value != "AB-"){
@@ -331,7 +315,6 @@ class Prescription{
             return null
         }
     }
-
     static weight_validation(_weight){
         if(_weight.value){
             var value = parseInt(_weight.value)
@@ -349,7 +332,6 @@ class Prescription{
             return null
         }
     }
-
     static payment_validation(_paid){
         if(_paid.value){
             var value = parseInt(_paid.value)
@@ -367,7 +349,6 @@ class Prescription{
             return null
         }
     }
-
     static currency_validation(_currency){
         if(_currency.value){
             if(_currency.value != "BDT" && _currency.value != "USD"){
@@ -384,7 +365,6 @@ class Prescription{
             return null
         }
     }
-
     static bp_validation(_bp){
         if(_bp.value){
             _bp.value = _bp.value.split(" ").join("")
@@ -403,7 +383,6 @@ class Prescription{
         }
         return null
     }
-
     static pulse_validation(_pulse){
         if(_pulse.value){
             var value = parseInt(_pulse.value)
@@ -417,7 +396,6 @@ class Prescription{
         }
         return null
     }
-
     static complaint_validation(_complaint){
         if(_complaint.value){
             var bullet = "\u2022"
@@ -440,7 +418,6 @@ class Prescription{
             return null
         }
     }
-
     static examinations_validation(_examinations){
         if(_examinations.value){
             var bullet = "\u2022"
@@ -463,7 +440,6 @@ class Prescription{
             return null
         }
     }
-
     static diagnosis_validation(_diagnosis){
         if(_diagnosis.value){
             var bullet = "\u2022"
@@ -486,7 +462,6 @@ class Prescription{
             return null
         }
     }
-
     static investigation_validation(_investigation){
         if(_investigation.value){
             var bullet = "\u2022"
@@ -505,7 +480,6 @@ class Prescription{
         }
         return null
     }
-
     static advice_validation(_advice){
         if(_advice.value){
             var bullet = "\u2022"
@@ -524,7 +498,6 @@ class Prescription{
         }
         return null
     }
-
     static follow_up_validation(_follow_up){
         if(_follow_up.value){
             var regex = /^[a-zA-Z0-9-']+( [a-zA-Z0-9-']+)*$/
@@ -538,7 +511,6 @@ class Prescription{
         }
         return null
     }
-
     static table_validation(_table){
         if(_table.rows.length > 0){
             var arr = []
@@ -572,13 +544,12 @@ class Prescription{
             return null
         }
     }
-
     parse_form(event){
         // // general_approach
         // form.method = "post"
         // form.action = "/"
         // form.submit()
-
+        
         event.preventDefault()
         var form = document.forms[0]
 
