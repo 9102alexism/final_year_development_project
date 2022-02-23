@@ -132,4 +132,33 @@ document.body.addEventListener("keyup", (event) => {
 })
 document.getElementsByTagName("button")[0].addEventListener("click", (event) => {
     event.preventDefault()
+
+    var data = {
+        "pharmacy": {
+            "id": NaN,
+            "name": document.getElementById("upper_section").children[0].innerHTML,
+            "address": document.getElementById("upper_section").children[1].innerHTML,
+            "phone_no": document.getElementById("upper_section").children[2].innerHTML
+        }
+    }
+    if(table.tBodies[0].rows.length > 0){
+        data["medicine"] = []
+        for(var row of table.tBodies[0].rows){
+            var med = {}
+            med["id"] = NaN
+            med["name"] = row.cells[1].innerHTML
+            med["quantity"] = row.cells[4].childNodes[0].value
+            data["medicine"].push(med)
+        }
+        data["total_bill"] = tfoot_price.innerHTML.split(" ")[0]
+    }
+    else{
+        data["medicine"] = null
+        data["total_bill"] = null
+    }
+
+    if(data["total_bill"] > 0){
+        console.log(data)
+    }
+    else alert("No Medicine Data Found")
 })
