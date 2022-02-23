@@ -12,8 +12,8 @@ document.getElementsByName("user_type")[0].addEventListener("change", (event) =>
         document.getElementById("pharmacy_form").style.display = "none"
         document.getElementById("pharmacy_form").style.visibility = "hidden"
 
-        // document.getElementById("pharmaceutical_form").style.display = "none"
-        // document.getElementById("pharmaceutical_form").style.visibility = "hidden"
+        document.getElementById("pharmaceutical_form").style.display = "none"
+        document.getElementById("pharmaceutical_form").style.visibility = "hidden"
     }
     else if(event.target.value == "pharmacy"){
         document.getElementById("pharmacy_form").style.display = "flex"
@@ -25,15 +25,31 @@ document.getElementsByName("user_type")[0].addEventListener("change", (event) =>
         document.getElementById("doctor_form").style.display = "none"
         document.getElementById("doctor_form").style.visibility = "hidden"
 
-        // document.getElementById("pharmaceutical_form").style.display = "none"
-        // document.getElementById("pharmaceutical_form").style.visibility = "hidden"
+        document.getElementById("pharmaceutical_form").style.display = "none"
+        document.getElementById("pharmaceutical_form").style.visibility = "hidden"
+    }
+    else if(event.target.value == "pharmaceutical"){
+        document.getElementById("pharmaceutical_form").style.display = "flex"
+        document.getElementById("pharmaceutical_form").style.visibility = "visible"
+
+        document.getElementsByTagName("button")[0].style.display = "flex"
+        document.getElementsByTagName("button")[0].style.visibility = "visible"
+
+        document.getElementById("doctor_form").style.display = "none"
+        document.getElementById("doctor_form").style.visibility = "hidden"
+
+        document.getElementById("pharmacy_form").style.display = "none"
+        document.getElementById("pharmacy_form").style.visibility = "hidden"
     }
     else{
         document.getElementById("doctor_form").style.display = "none"
         document.getElementById("doctor_form").style.visibility = "hidden"
 
-        document.getElementById("doctor_form").style.display = "none"
-        document.getElementById("doctor_form").style.visibility = "hidden"
+        document.getElementById("pharmacy_form").style.display = "none"
+        document.getElementById("pharmacy_form").style.visibility = "hidden"
+
+        document.getElementById("pharmaceutical_form").style.display = "none"
+        document.getElementById("pharmaceutical_form").style.visibility = "hidden"
 
         document.getElementsByTagName("button")[0].style.display = "none"
         document.getElementsByTagName("button")[0].style.visibility = "hidden"
@@ -143,7 +159,31 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
         else alert("Some Data Is Missing!")
     }
     else if(document.getElementsByName("user_type")[0].value == "pharmaceutical"){
-
+        if(form["name"][2].value){
+            if(form["address"][2].value){
+                if(form["phone"][2].value){
+                    if(form["user_id"][2].value){
+                        if(form["password"][2].value){
+                            var data = {
+                                "name": form["name"][2].value,
+                                "address": form["address"][2].value,
+                                "phone": form["phone"][2].value,
+                                "user_id": form["user_id"][2].value,
+                                "password": form["password"][2].value,
+                                "company_id": uuid
+                            }
+                            console.log(data)
+                            form.reset()
+                        }
+                        else alert("Some Data Is Missing!")
+                    }
+                    else alert("Some Data Is Missing!")
+                }
+                else alert("Some Data Is Missing!")
+            }
+            else alert("Some Data Is Missing!")
+        }
+        else alert("Some Data Is Missing!")
     }
     else{
         alert("Something is wrong!")

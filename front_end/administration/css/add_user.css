@@ -67,7 +67,6 @@ main{
     height: calc(100% - 20vh);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 20px;
 }
@@ -76,7 +75,7 @@ form{
     display: flex;
     flex-direction: column;
 }
-#doctor_form, #pharmacy_form{
+#doctor_form, #pharmacy_form, #pharmaceutical_form{
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -87,7 +86,7 @@ form{
     visibility: hidden;
     display: none
 }
-#doctor_form > input, #doctor_form > textarea, #pharmacy_form > input, #pharmacy_form > textarea{
+#doctor_form > input, #doctor_form > textarea, #pharmacy_form > input, #pharmacy_form > textarea, #pharmaceutical_form > input, #pharmaceutical_form > textarea{
     box-sizing: border-box;
     width: 100%;
     padding: 10px;
@@ -96,10 +95,10 @@ form{
     border: none;
     border-bottom: 3px solid #33e2ffde;
 }
-#doctor_form > input:focus, #doctor_form > textarea:focus, #pharmacy_form > input:focus, #pharmacy_form > textarea:focus{
+#doctor_form > input:focus, #doctor_form > textarea:focus, #pharmacy_form > input:focus, #pharmacy_form > textarea:focus, #pharmaceutical_form > input:focus, #pharmaceutical_form > textarea:focus{
     outline: none;
 }
-#doctor_form textarea, #pharmacy_form textarea{
+#doctor_form textarea, #pharmacy_form textarea, #pharmaceutical_form > textarea{
     resize: none;
     overflow-y: auto;
 }
