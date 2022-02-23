@@ -606,10 +606,10 @@ class Prescription{
                                                         Prescription.xhr.onload = function(){
                                                             if(this.readyState == 4 && this.status == 201){
                                                                 console.log(this.response)
+                                                                form.reset()
                                                             }
                                                         }
                                                         var url = "https://webhook.site/6e6e27cf-acea-4369-9e71-e70e04e12ea3"
-                                                        Prescription.xhr.setRequestHeader("Authorization", "hulu")
                                                         Prescription.xhr.open("POST", url)
                                                         Prescription.xhr.send(JSON.stringify(data))
                                                     }

@@ -10,24 +10,47 @@
         <header>
             <img src="../resources/admin.png" width="60" height="60">
             <nav>
-                <ul>Home</ul>
-                <ul>Add User</ul>
+                <ul><a href="#">Home</a></ul>
+                <ul><a href="#">Add User</a></ul>
             </nav>
         </header>
         <main>
-            <div>
-                <!-- <select name="user_type">
+            <div id="upper_section">
+                <select name="user_type">
                     <option value="" disabled hidden selected>Select User Type</option>
                     <option value="doctor">Doctor</option>
                     <option value="pharmacy">Pharmacy</option>
                     <option value="pharmaceutical">Pharmaceutical</option>
-                </select> -->
-                <div id="select">
-                    <div>Select User Type</div>
-                    <div hidden>Doctor</div>
-                    <div hidden>Pharmacy</div>
-                    <div hidden>Pharmaceutical</div>
-                </div>
+                </select>
+            </div>
+            <div id="lower_section">
+                <form>
+                    <div id="doctor_form">
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="text" name="department" placeholder="Department" required>
+                        <input type="text" name="institute" placeholder="Institute" required>
+                        <input type="text" name="role" placeholder="Role" required>
+                        <textarea name="degree" placeholder="Degree" required></textarea>
+                        <textarea name="specialized_fields" placeholder="Specialized Fields" required></textarea>
+                        <input type="text" name="reg_num" placeholder="Registration Number" required>
+                        <textarea name="address" placeholder="Address" required></textarea>
+                        <textarea name="visiting_hour" placeholder="Visiting Hour" required></textarea>
+                        <input type="text" name="off_day" placeholder="Off Day" required>
+                        <input type="text" name="phone" placeholder="Phone" required>
+                        <input type="email" name="user_id" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div id="pharmacy_form">
+                        <input type="text" name="name" placeholder="Name" required>
+                        <textarea name="address" placeholder="Address" required></textarea>
+                        <input type="text" name="e_tin" placeholder="E-Tin" required>
+                        <input type="text" name="operation_hour" placeholder="Operation Hour" required>
+                        <input type="text" name="phone" placeholder="Phone" required>
+                        <input type="email" name="user_id" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                </form>
+                <button type="submit">Submit</button>
             </div>
         </main>
         <footer></footer>
