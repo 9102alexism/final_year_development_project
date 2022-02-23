@@ -1,4 +1,5 @@
 class Prescription{
+    static xhr = new XMLHttpRequest()
     complaint
     examinations
     diagnosis
@@ -9,6 +10,7 @@ class Prescription{
     advice
     submit_btn
     constructor(){
+        Prescription.xhr.responseType = "json"
         this.new_date = new Date()
         this.form = document.forms[0]
 
@@ -162,7 +164,6 @@ class Prescription{
     textarea_bullet(event){
         // special_thanks => https://stackoverflow.com/a/57042927
         var bullet = "\u2022"
-        
         var {key, target} = event
         var {selectionStart, value} = target
     
@@ -176,7 +177,6 @@ class Prescription{
     }
     add_medicine(){
         var form = document.forms[0]
-
         if(form["medicine"].value){
             if(form["instruction"].value){
                 if(form["duration"].value){
@@ -185,8 +185,8 @@ class Prescription{
                         var table = form.getElementsByTagName("table")[0]
                         var row_count = table.tBodies[0].rows.length + 1
 
-                        var my_table = form.getElementsByTagName("tbody")[0]
-                        var row = my_table.insertRow()
+                        var tbody = form.getElementsByTagName("tbody")[0]
+                        var row = tbody.insertRow()
 
                         var cell_1 = row.insertCell(0)
                         var cell_2 = row.insertCell(1)
@@ -213,9 +213,7 @@ class Prescription{
         else form["medicine"].focus()
     }
     rem_medicine(event){
-        if (event.target.className === "rem_med"){
-            event.target.closest("tr").remove()
-        }
+        if(event.target.className === "rem_med") event.target.closest("tr").remove()
     }
     add_advice(event){
         var bullet = "\u2022"
@@ -605,15 +603,14 @@ class Prescription{
                                                 if(data["diagnosis"]){
                                                     if(data["medicine"]){
                                                         // ajax approach
-                                                        var xhr = new XMLHttpRequest()
-                                                        xhr.onload = function(){
-                                                            if (this.readyState == 4 && this.status == 200){
-                                                                alert(this.responseText)
+                                                        Prescription.xhr.onload = function(){
+                                                            if(this.readyState == 4 && this.status == 201){
+                                                                console.log(this.response)
                                                             }
                                                         }
                                                         var url = "https://webhook.site/6e6e27cf-acea-4369-9e71-e70e04e12ea3"
-                                                        xhr.open("POST", url, true)
-                                                        xhr.send(JSON.stringify(data))
+                                                        Prescription.xhr.open("POST", url)
+                                                        Prescription.xhr.send(JSON.stringify(data))
                                                     }
                                                 }
                                                 form.reportValidity()

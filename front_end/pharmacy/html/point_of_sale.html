@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="../css/point_of_sale.css">
+
+        <title>Point Of Sale</title>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div id="navbar">
+                    <div id="nv_icon">
+                        <img src="../resources/pharmacy.png">
+                    </div>
+                    <div id="nv_items">
+                        <li class="no_select"><a href="#" class="list_styling">Home</a></li>
+                        <li class="no_select"><a href="#" class="list_styling">Point Of Sale</a></li>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div id="upper_section">
+                    <label>Pharmacy Name</label>
+                    <label>Pharmacy Address</label>
+                    <label>Pharmacy Phone Number</label>
+                </div>
+                <div id="lower_section">
+                    <form>
+                        <div class="mini_group">
+                            <input type="text" name="prescription_id", placeholder="Prescription ID">
+                            <input type="text" name="id_name", placeholder="Medicine ID/Name">
+                            <img src="../resources/add.png" onclick="add_medicine()">
+                        </div>
+                        <div id="med_tb">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>SL No.</td>
+                                        <td>Name</td>
+                                        <td>Shelf No.</td>
+                                        <td>Available</td>
+                                        <td>Quantity</td>
+                                        <td>Price</td>
+                                        <td>Delete</td>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>Discount</td>
+                                        <td><input type="number" name="discount" min="0" max="100" placeholder="%"></td>
+                                        <td>Total Price</td>
+                                        <td>0 BDT</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+    </body>
+    <script src="../js/point_of_sale.js"></script>
+</html>
