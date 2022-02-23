@@ -604,7 +604,7 @@ class Prescription{
                                                     if(data["medicine"]){
                                                         // ajax approach
                                                         Prescription.xhr.onload = function(){
-                                                            if(this.readyState == 4 && this.status == 201){
+                                                            if(this.readyState == 4 && this.status == 200){
                                                                 console.log(this.response)
                                                                 form.reset()
                                                             }
