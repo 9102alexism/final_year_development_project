@@ -22,6 +22,8 @@ header{
 img{
     margin: 0 auto;
     padding: 20px;
+    width: 50px;
+    height: 50px;
 }
 nav{
     display: flex;
@@ -129,6 +131,9 @@ button:active{
     ::placeholder{
         font-size: 10px;
     }
+    nav{
+        margin-left: 10%;
+    }
 }
 @media only screen and (max-device-width: 1000px){
     *{
@@ -144,6 +149,9 @@ button:active{
     }
     ::placeholder{
         font-size: 10px;
+    }
+    nav{
+        margin-left: 10%;
     }
 }
 @media only screen and (max-width: 1000px){

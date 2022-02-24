@@ -1,0 +1,64 @@
+:root{
+    --header_color: #dff2ff;
+    --text_color: #010101a6;
+    --nav_items_color: linear-gradient(90deg, rgba(175, 249, 227, 0.5) 50%, rgba(254, 208, 208, 0.5) 50%);;
+    --nav_items_shadow: -3px 3px 6px #c9dae6, 3px -3px 6px #ffffff;
+    --nav_items_shadow_clicked: inset -3px 3px 6px #c9dae6, inset 3px -3px 6px #ffffff;
+}
+@font-face{
+    font-family: "monoid";
+    src: url("../resources/monoid.ttf");
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: monoid;
+    font-size: 15px;
+}
+.container{
+    padding: 10px;
+}
+header{
+    background-color: var(--header_color);
+}
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    max-width: 1220px;
+}
+#nv_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#nv_icon img{
+    display: block;
+    height: 50px;
+}
+#nv_items{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    color: var(--text_color);
+    gap: 10px;
+}
+#nv_items .list_styling{
+    display: inline-block;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 50px;
+    color: var(--text_color);
+    text-decoration: none;
+    background: var(--nav_items_color);
+    box-shadow: var(--nav_items_shadow);
+}
+#nv_items .list_styling:active{
+    box-shadow: var(--nav_items_shadow_clicked);
+}
+main{
+    background-color: var(--body_color);
+}
+#upper_section{
+    
+}

@@ -608,33 +608,35 @@ class Prescription{
                                                                 console.log(this.response)
                                                                 form.reset()
                                                             }
+                                                            else alert("No Medicine Data Found")
                                                         }
-                                                        var url = "https://webhook.site/6e6e27cf-acea-4369-9e71-e70e04e12ea3"
+                                                        var url = "/"
                                                         Prescription.xhr.open("POST", url)
+                                                        Prescription.xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
                                                         Prescription.xhr.send(JSON.stringify(data))
                                                     }
-                                                    alert("No Medicine Data Found")
+                                                    else form.reportValidity()
                                                 }
-                                                form.reportValidity()
+                                                else form.reportValidity()
                                             }
-                                            form.reportValidity()
+                                            else form.reportValidity()
                                         }
-                                        form.reportValidity()
+                                        else form.reportValidity()
                                     }
-                                    form.reportValidity()
+                                    else form.reportValidity()
                                 }
-                                form.reportValidity()
+                                else form.reportValidity()
                             }
-                            form.reportValidity()
+                            else form.reportValidity()
                         }
-                        form.reportValidity()
+                        else form.reportValidity()
                     }
-                    form.reportValidity()
+                    else form.reportValidity()
                 }
-                form.reportValidity()
+                else form.reportValidity()
             }
-            form.reportValidity()
+            else form.reportValidity()
         }
-        form.reportValidity()
+        else form.reportValidity()
     }
 }
