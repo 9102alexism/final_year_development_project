@@ -186,6 +186,15 @@ button:active{
         flex-direction: column;
         align-items: center;
     }
+    #navbar{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+    #nv_items{
+        flex-direction: column;
+    }
 }
 @media only screen and (max-device-width: 1000px){
     tr{
@@ -199,6 +208,15 @@ button:active{
     #lower_section .mini_group{
         flex-direction: column;
         align-items: center;
+    }
+    #navbar{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+    #nv_items{
+        flex-direction: column;
     }
 }
 @media only screen and (max-width: 1000px){

@@ -93,7 +93,7 @@ form{
     margin: auto;
     gap: 10px;
     visibility: hidden;
-    display: none
+    display: none;
 }
 #doctor_form > input, #doctor_form > textarea, #pharmacy_form > input, #pharmacy_form > textarea, #pharmaceutical_form > input, #pharmaceutical_form > textarea{
     box-sizing: border-box;
@@ -118,7 +118,7 @@ button{
     background: #e6e6e6;
     box-shadow:  5px 5px 10px #c1c1c1, -5px -5px 10px #ffffff;
     visibility: hidden;
-    display: none
+    display: none;
 }
 button:active{
     background: #e6e6e6;

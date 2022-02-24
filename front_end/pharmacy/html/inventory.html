@@ -10,7 +10,7 @@
         <header>
             <div class="container">
                 <div id="navbar">
-                    <div id="nv_icon">
+                    <div class="nv_icon">
                         <img src="../resources/pharmacy.png">
                     </div>
                     <div id="nv_items">
@@ -18,19 +18,74 @@
                         <li class="no_select"><a href="point_of_sale.html" class="list_styling">Point Of Sale</a></li>
                         <li class="no_select"><a href="#" class="list_styling">Inventory</a></li>
                     </div>
-                    <div id="nv_icon">
+                    <div class="nv_icon">
                         <a href="#"><img src="../resources/log_out.png"></a>
                     </div>
                 </div>
             </div>
         </header>
         <main>
-            <div id="upper_section">
-                <div id="container_1">
-                    
+            <div class="container" id="content">
+                <div id="upper_section">
+                    <div id="box_1">
+                        <input type="text" name="medicine_id" placeholder="Medicine ID">
+                        <input type="text" name="batch_number" placeholder="Batch Number">
+                        <img src="../resources/search.png" id="search">
+                    </div>
+                    <div id="box_2">
+                        <div>
+                            <input type="text" name="med_name" placeholder="Mecicine Name" disabled>
+                        </div>
+                        <div>
+                            <input type="text" name="med_id" placeholder="Medicine ID" disabled>
+                            <input type="text" name="bat_num" placeholder="Batch Number" disabled>
+                        </div>
+                        <div>
+                            <input type="text" name="med_count" placeholder="Per Leaf" disabled>
+                            <input type="text" name="unit_price" placeholder="Unit Price" disabled>
+                        </div>
+                        <div>
+                            <input type="number" name="med_quantity" placeholder="Quantity" required>
+                            <input type="text" name="shelf_num" placeholder="Shelf Number" required>
+                        </div>
+                    </div>
+                    <div id="box_3">
+                        <div id="create">
+                            <img src="../resources/create.png">
+                        </div>
+                        <div id="read">
+                            <img src="../resources/read.png">
+                        </div>
+                        <div id="update">
+                            <img src="../resources/edit.png">
+                        </div>
+                        <div id="delete">
+                            <img src="../resources/delete.png">
+                        </div>
+                    </div>
+                </div>
+                <div id="lower_section">
+                    <div id="inventory_title">Inventory</div>
+                    <div id="inventory_table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>ID</td>
+                                    <td>Name</td>
+                                    <td>Batch No.</td>
+                                    <td>Shelf Number</td>
+                                    <td>Per Leaf</td>
+                                    <td>Unit Price</td>
+                                    <td>Quantity</td>
+                                    <td>Edit</td>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div id="lower_section"></div>
         </main>
     </body>
+    <script src="../js/inventory.js"></script>
 </html>

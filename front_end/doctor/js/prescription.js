@@ -610,9 +610,9 @@ class Prescription{
                                                             }
                                                             else alert("No Medicine Data Found")
                                                         }
-                                                        var url = "/"
+                                                        var url = "https://webhook.site/6e6e27cf-acea-4369-9e71-e70e04e12ea3"
                                                         Prescription.xhr.open("POST", url)
-                                                        Prescription.xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+                                                        Prescription.xhr.setRequestHeader("Content-Type", "application/json")
                                                         Prescription.xhr.send(JSON.stringify(data))
                                                     }
                                                     else form.reportValidity()
