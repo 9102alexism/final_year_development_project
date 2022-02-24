@@ -131,18 +131,22 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
                         if(form["phone"][1].value){
                             if(form["user_id"][1].value){
                                 if(form["password"][1].value){
-                                    var data = {
-                                        "name": form["name"][1].value,
-                                        "address": form["address"][1].value,
-                                        "e_tin": form["e_tin"].value,
-                                        "operation_hour": form["operation_hour"].value,
-                                        "phone": form["phone"][1].value,
-                                        "user_id": form["user_id"][1].value,
-                                        "password": form["password"][1].value,
-                                        "pharmacy_id": uuid
+                                    if(form["zone"].value){
+                                        var data = {
+                                            "name": form["name"][1].value,
+                                            "address": form["address"][1].value,
+                                            "e_tin": form["e_tin"].value,
+                                            "operation_hour": form["operation_hour"].value,
+                                            "phone": form["phone"][1].value,
+                                            "user_id": form["user_id"][1].value,
+                                            "password": form["password"][1].value,
+                                            "pharmacy_id": uuid,
+                                            "zone": form["zone"].value
+                                        }
+                                        console.log(data)
+                                        form.reset()
                                     }
-                                    console.log(data)
-                                    form.reset()
+                                    else alert("Some Data Is Missing!")
                                 }
                                 else alert("Some Data Is Missing!")
                             }
