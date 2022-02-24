@@ -8,6 +8,9 @@ document.getElementById("read").addEventListener("click", () => {
     document.getElementById("box_1").style.display = "none"
     document.getElementById("box_1").style.visibility = "hidden"
 
+    document.getElementById("box_2").style.display = "none"
+    document.getElementById("box_2").style.visibility = "hidden"
+
     var data = [
         {
             "id": "1sdngiud",
