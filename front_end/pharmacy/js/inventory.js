@@ -1,3 +1,4 @@
+var form = document.forms[0]
 var tbody = document.getElementsByTagName("tbody")[0]
 
 document.getElementById("create").addEventListener("click", () => {
@@ -101,3 +102,7 @@ function add_row(_data_available){
     cell_7.innerHTML = _data_available["quantity"]
     cell_8.innerHTML = `<img class="rem_med" src="../resources/edit_2.png">`
 }
+document.getElementsByTagName("button")[0].addEventListener("click", (event) => {
+    event.preventDefault()
+    console.log("huh")
+})

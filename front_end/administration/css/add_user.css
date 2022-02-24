@@ -85,7 +85,7 @@ form{
     flex-direction: column;
 }
 #doctor_form, #pharmacy_form, #pharmaceutical_form{
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -121,7 +121,6 @@ button{
     display: none;
 }
 button:active{
-    background: #e6e6e6;
     box-shadow: inset 5px 5px 10px #c1c1c1, inset -5px -5px 10px #ffffff;
 }
 @media only screen and (max-device-width: 800px){
@@ -133,6 +132,9 @@ button:active{
     }
     nav{
         margin-left: 10%;
+    }
+    #doctor_form, #pharmacy_form, #pharmaceutical_form{
+        width: 70%;
     }
 }
 @media only screen and (max-device-width: 1000px){
@@ -152,6 +154,9 @@ button:active{
     }
     nav{
         margin-left: 10%;
+    }
+    #doctor_form, #pharmacy_form, #pharmaceutical_form{
+        width: 70%;
     }
 }
 @media only screen and (max-width: 1000px){

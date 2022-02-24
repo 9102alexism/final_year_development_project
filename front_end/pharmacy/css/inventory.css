@@ -100,13 +100,18 @@ main{
 #box_2{
     display: flex;
     flex-direction: column;
-    gap: 10px;
     justify-content: center;
     padding: 10px;
     background-color: #ebedff;
     max-width: 50%;
     visibility: hidden;
     display: none;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
 }
 #box_2 div{
     width: 100%;
@@ -125,6 +130,16 @@ main{
 }
 #box_2 div:nth-child(1) > input{
     width: 100%;
+}
+button{
+    width: 50%;
+    padding: 10px;
+    border-radius: 36px;
+    background: #ebedff;
+    box-shadow: 5px 5px 10px #9495a1, -5px -5px 10px #ffffff;
+}
+button:active{
+    box-shadow: inset 5px 5px 10px #9495a1, inset -5px -5px 10px #ffffff;
 }
 #box_3{
     width: 25%;
