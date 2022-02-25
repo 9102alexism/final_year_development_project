@@ -608,7 +608,7 @@ class Prescription{
                                                     if(data["medicine"]){
                                                         Prescription.xhr.onload = function(){
                                                             if(this.readyState == 4 && this.status == 200){
-                                                                alert("Submitted")
+                                                                location.reload()
                                                             }
                                                             else alert("Failed")
                                                         }

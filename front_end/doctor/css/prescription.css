@@ -154,9 +154,9 @@ form{
     border-left: none;
     width: 60px;
 }
-#right_panel #date{
-    width: -webkit-max-content;
-    width: -moz-max-content;
+input[type="date"]{
+    width: -webkit-max-content !important;
+    width: -moz-max-content !important;
 }
 /* bottom_layer */
 #result{
