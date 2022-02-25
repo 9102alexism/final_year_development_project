@@ -1,5 +1,7 @@
 class Prescription{
     static xhr = new XMLHttpRequest()
+    static user_data = JSON.parse(localStorage.getItem("user_data"))
+    static url = "http://ec23-43-224-111-192.ngrok.io"
     complaint
     examinations
     diagnosis
@@ -48,8 +50,7 @@ class Prescription{
     }
     set_data(){
         // department
-        var department_available = ["Dermatology"] // from jwt_token
-        this.department.value = department_available.join(", ")
+        this.department.value = Prescription.user_data["dept"]
         this.department.disabled = true
         // patient
         this.patient_name.placeholder = "Patient Name"
@@ -123,17 +124,21 @@ class Prescription{
         this.examinations.required = true
         this.diagnosis.required = true
         // right_section
-
-        // get_request -> token, medicine_info (true)
-        // /doctors/prescription
-
-        var data_available = ["Napa", "Alatrol", "Napa", "Alatrol", "Napa", "Alatrol", "Napa", "Alatrol", "Napa", "Alatrol"]
-        var medicine_list = document.getElementById("medicines")
-        for(var medicine of data_available){
-            var opt = document.createElement("option")
-            opt.value = medicine
-            medicine_list.appendChild(opt)
+        var data_available = []
+        Prescription.xhr.onload = function(){
+            if(this.readyState == 4 && this.status == 200){
+                data_available = this.response
+                var medicine_list = document.getElementById("medicines")
+                for(var medicine of data_available){
+                    var opt = document.createElement("option")
+                    opt.value = medicine["brandName"]
+                    medicine_list.appendChild(opt)
+                }
+            }
         }
+        Prescription.xhr.open("GET", Prescription.url + "/doctors/medicines")
+        Prescription.xhr.setRequestHeader("Authorization", localStorage.getItem("token"))
+        Prescription.xhr.send()
         this.medicine.placeholder = "Medicine"
 
         var data_available = ["1+0+1", "1+1+1", "0+0+1", "1+0+0", "0+1+0", "1+1+0", "0+1+1", "1+1+1+1"]
@@ -601,17 +606,15 @@ class Prescription{
                                             if(data["examinations"]){
                                                 if(data["diagnosis"]){
                                                     if(data["medicine"]){
-                                                        // ajax approach
                                                         Prescription.xhr.onload = function(){
                                                             if(this.readyState == 4 && this.status == 200){
-                                                                console.log(this.response)
-                                                                form.reset()
+                                                                alert("Submitted")
                                                             }
-                                                            else alert("No Medicine Data Found")
+                                                            else alert("Failed")
                                                         }
-                                                        var url = "https://webhook.site/6e6e27cf-acea-4369-9e71-e70e04e12ea3"
-                                                        Prescription.xhr.open("POST", url)
+                                                        Prescription.xhr.open("POST", Prescription.url + "/doctors/prescribe")
                                                         Prescription.xhr.setRequestHeader("Content-Type", "application/json")
+                                                        Prescription.xhr.setRequestHeader("Authorization", Prescription.user_data["token"])
                                                         Prescription.xhr.send(JSON.stringify(data))
                                                     }
                                                     else form.reportValidity()
