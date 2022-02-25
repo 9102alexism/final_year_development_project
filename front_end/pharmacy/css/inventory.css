@@ -90,6 +90,7 @@ main{
     border-right: 2px solid #0000ff59;
 }
 #box_1 img{
+    height: fit-content;
     border-radius: 25px;
     background: #e2e4ff;
     box-shadow: 3px 3px 5px #b3b4c9, -3px -3px 5px #ffffff;
@@ -209,7 +210,10 @@ button:active{
 #inventory_title{
     border: 1px solid #b4b4b4;
     padding: 10px;
-    background: white;
+    background: #005e74;
+    color: #fafafa;
+    border-radius: 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.20);
 }
 #inventory_table{
     width: 80%;
@@ -222,17 +226,36 @@ table{
     width: 100%;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.20);
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 }
 thead{
-    background: #121212;
-    color: #cbcbcb;
+    padding: 5px;
+    background: #0a8;
+    color: #fafafa;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    font-weight: bold;
 }
 tbody{
-    background: #3d3d3d;
-    color: #dcdcdc;
+    background: #fff;
 }
-tbody > tr{
-    border: 1px solid #121212;
+tbody tr{
+    border-bottom: 1px solid #dddddd;
+}
+tbody tr:nth-of-type(even){
+    background-color: #f2f2f2;
+}
+tbody tr:last-of-type{
+    border-bottom: 2px solid #0a8;
+}
+tbody tr:nth-last-of-type(odd) img{
+    background: #f2f2f2;
+    box-shadow:  2px 2px 6px #bababa, -2px -2px 6px #ffffff;
+}
+tbody tr:nth-last-of-type(odd) img:active{
+    box-shadow: inset 2px 2px 6px #bababa, inset -2px -2px 6px #ffffff;
 }
 tr{
     display: flex;
@@ -251,11 +274,11 @@ td > input{
 td > img{
     height: 20px;
     border-radius: 25px;
-    background: #3d3d3d;;
-    box-shadow: 3px 3px 5px #181818, -3px -3px 5px #626262;
+    background: #ffffff;
+    box-shadow: 2px 2px 6px #c4c4c4, -2px -2px 6px #ffffff;
 }
 td > img:active{
-    box-shadow: inset 3px 3px 5px #181818, inset -3px -3px 5px #626262;
+    box-shadow: inset 2px 2px 6px #c4c4c4, inset -2px -2px 6px #ffffff;
 }
 @media only screen and (max-device-width: 800px){
     #navbar{

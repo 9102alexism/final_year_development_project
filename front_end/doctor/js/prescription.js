@@ -48,7 +48,7 @@ class Prescription{
     }
     set_data(){
         // department
-        var department_available = ["Dermatology"]
+        var department_available = ["Dermatology"] // from jwt_token
         this.department.value = department_available.join(", ")
         this.department.disabled = true
         // patient
@@ -123,7 +123,11 @@ class Prescription{
         this.examinations.required = true
         this.diagnosis.required = true
         // right_section
-        var data_available = ["Napa", "Alatrol"]
+
+        // get_request -> token, medicine_info (true)
+        // /doctors/prescription
+
+        var data_available = ["Napa", "Alatrol", "Napa", "Alatrol", "Napa", "Alatrol", "Napa", "Alatrol", "Napa", "Alatrol"]
         var medicine_list = document.getElementById("medicines")
         for(var medicine of data_available){
             var opt = document.createElement("option")
@@ -132,7 +136,7 @@ class Prescription{
         }
         this.medicine.placeholder = "Medicine"
 
-        var data_available = ["1+0+1", "1+1+1"]
+        var data_available = ["1+0+1", "1+1+1", "0+0+1", "1+0+0", "0+1+0", "1+1+0", "0+1+1", "1+1+1+1"]
         var instruction_list = document.getElementById("instructions")
         for(var instruction of data_available){
             var opt = document.createElement("option")
@@ -543,11 +547,6 @@ class Prescription{
         }
     }
     parse_form(event){
-        // // general_approach
-        // form.method = "post"
-        // form.action = "/"
-        // form.submit()
-        
         event.preventDefault()
         var form = document.forms[0]
 

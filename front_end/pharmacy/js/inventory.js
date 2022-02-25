@@ -1,3 +1,13 @@
+// get
+// /pharmacies/inventory/data
+
+// get
+// /pharmacies/inventory (table)
+
+// post (/pharmacies/inventory/submit)
+// medName, medQty, unitPrice, medId, batchNo, medCount, shelfNumber, type : add, edit, del
+
+
 var form = document.forms[0]
 var tbody = document.getElementsByTagName("tbody")[0]
 

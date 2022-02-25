@@ -58,70 +58,65 @@ header{
     box-shadow: var(--nav_items_shadow_clicked);
 }
 #content{
-    background: #dbe4ff;
-    padding: 10px;
-    min-height: 70vh;
+    width: 60%;
+    margin: auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
-form{
-    width: 30%;
+table{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    border: 1px solid #a5a5a5;
-    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.20);
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 }
-input{
-    box-sizing: border-box;
+thead{
+    padding: 5px;
+    background: #0198a8;
+    color: #fafafa;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    font-weight: bold;
+}
+tbody{
+    background: #fff;
+}
+tbody tr{
+    border-bottom: 1px solid #dddddd;
+}
+tbody tr:nth-of-type(even){
+    background-color: #f2f2f2;
+}
+tbody tr:last-of-type{
+    border-bottom: 2px solid #0198a8;
+}
+tbody tr:nth-last-of-type(odd) img{
+    background: #f2f2f2;
+    box-shadow:  2px 2px 6px #bababa, -2px -2px 6px #ffffff;
+}
+tbody tr:nth-last-of-type(odd) img:active{
+    box-shadow: inset 2px 2px 6px #bababa, inset -2px -2px 6px #ffffff;
+}
+tr{
+    display: flex;
+}
+td{
     width: 100%;
     padding: 10px;
-    font-size: 16px;
-    border: none;
-    background: #dbe4ff;
-    box-shadow: inset 5px 5px 10px #9ba2b5, inset -5px -5px 10px #ffffff;
+    text-align: center;
 }
-input:focus{
-    outline: none;
+td > input{
+    box-sizing: border-box;
+    width: 100%;
+    border: none !important;
+    padding: 0px !important;
 }
-button{
-    width: 50%;
-    padding: 10px;
-    border-radius: 76px;
-    background: #dbe4ff;
-    box-shadow: 5px 5px 6px #c3cbe3, -5px -5px 6px #f3fdff;
+td > img{
+    height: 20px;
+    border-radius: 25px;
+    background: #ffffff;
+    box-shadow: 2px 2px 6px #c4c4c4, -2px -2px 6px #ffffff;
 }
-button:active{
-    box-shadow: inset 5px 5px 6px #c3cbe3, inset -5px -5px 6px #f3fdff;
-}
-@media only screen and (max-device-width: 800px){
-    form{
-        width: 80%;
-    }
-    #navbar{
-        flex-direction: column;
-    }
-    #nv_items{
-        flex-direction: column;
-    }
-}
-@media only screen and (max-device-width: 1000px){
-    
-}
-@media only screen and (max-width: 800px){
-    form{
-        width: 80%;
-    }
-    #navbar{
-        flex-direction: column;
-    }
-    #nv_items{
-        flex-direction: column;
-    }
-}
-@media only screen and (max-width: 1000px){
-    
+td > img:active{
+    box-shadow: inset 2px 2px 6px #c4c4c4, inset -2px -2px 6px #ffffff;
 }

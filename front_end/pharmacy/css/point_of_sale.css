@@ -200,7 +200,7 @@ button:active{
     tr{
         flex-wrap: wrap;
     }
-    td:nth-last-child(1){
+    tbody td:nth-last-child(1){
         border: none;
     }
 }
@@ -223,7 +223,7 @@ button:active{
     tr{
         flex-wrap: wrap;
     }
-    td:nth-last-child(1){
+    tbody td:nth-last-child(1){
         border: none;
     }
 }

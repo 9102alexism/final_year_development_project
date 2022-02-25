@@ -1,3 +1,8 @@
+// prescriptionId, brandName
+// get (/pharmacies/medicine)
+
+// post (/pharmacies/invoice)
+
 var xhr = new XMLHttpRequest()
 xhr.responseType = "json"
 var form = document.forms[0]
@@ -134,12 +139,8 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
     event.preventDefault()
 
     var data = {
-        "pharmacy": {
-            "id": NaN,
-            "name": document.getElementById("upper_section").children[0].innerHTML,
-            "address": document.getElementById("upper_section").children[1].innerHTML,
-            "phone_no": document.getElementById("upper_section").children[2].innerHTML
-        }
+        "pharmacyId": null, 
+        "date": null
     }
     if(table.tBodies[0].rows.length > 0){
         data["medicine"] = []
@@ -147,18 +148,31 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
             var med = {}
             med["id"] = NaN
             med["name"] = row.cells[1].innerHTML
-            med["quantity"] = row.cells[4].childNodes[0].value
+            med["totalPurchased"] = row.cells[4].childNodes[0].value
             data["medicine"].push(med)
         }
-        data["total_bill"] = tfoot_price.innerHTML.split(" ")[0]
+        data["total"] = tfoot_price.innerHTML.split(" ")[0]
     }
     else{
         data["medicine"] = null
-        data["total_bill"] = null
+        data["total"] = null
     }
 
-    if(data["total_bill"] > 0){
+    if(data["total"] > 0){
         console.log(data)
     }
     else alert("No Medicine Data Found")
 })
+
+// {
+//     "pharmacyId": null, 
+//     "date": null,
+//     "medicine": [
+//         {
+//             "id": null,
+//             "name": SVGNumberList,
+//             "totalPurchased": null
+//         }
+//     ],
+//     "total": null
+// }

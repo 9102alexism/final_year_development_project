@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/add_product.css">
+        <link rel="stylesheet" href="../css/add_batch.css">
         <title>Add Product</title>
     </head>
     <body>
@@ -16,8 +16,8 @@
                     <div id="nv_items">
                         <li class="no_select"><a href="#" class="list_styling">Home</a></li>
                         <li class="no_select"><a href="products.html" class="list_styling">Products</a></li>
-                        <li class="no_select"><a href="#" class="list_styling">Add Product</a></li>
-                        <li class="no_select"><a href="add_batch.html" class="list_styling">Add Batch</a></li>
+                        <li class="no_select"><a href="add_product.html" class="list_styling">Add Product</a></li>
+                        <li class="no_select"><a href="#" class="list_styling">Add Batch</a></li>
                     </div>
                     <div id="nv_icon">
                         <a href="#"><img src="../resources/log_out.png"></a>
@@ -29,19 +29,15 @@
             <div class="container">
                 <div id="content">
                     <form>
-                        <input type="text" name="brand_name" placeholder="Brand Name">
-                        <input type="text" name="generic_name" placeholder="Generic Name">
-                        <input type="text" name="med_type" placeholder="Medicine Type">
-                        <input type="number" name="weight" placeholder="Weight">
-                        <input type="number" name="unit_price" placeholder="Unit Price">
-                        <input type="number" name="per_leaf" placeholder="Per Leaf">
-                        <input type="number" name="leaf_price" placeholder="Leaf Price">
-                        <input type="text" name="department" placeholder="Department">
+                        <input type="text" name="med_id" placeholder="Medicine ID" required>
+                        <input type="text" name="batch_num" placeholder="Batch No." required>
+                        <input type="text" name="count" placeholder="Count" required>
+                        <input type="text" name="zone" placeholder="Zone" required>
                         <button type="submit">Submit</button>
                     </form>
                 </div>
             </div>
         </main>
     </body>
-    <script src="../js/add_product.js"></script>
+    <script src="../js/add_batch.js"></script>
 </html>
