@@ -20,7 +20,7 @@
                         <li class="no_select"><a href="#" class="list_styling">Add Batch</a></li>
                     </div>
                     <div id="nv_icon">
-                        <a href="#"><img src="../resources/log_out.png"></a>
+                        <a href="#" onclick="return log_out(this)"><img src="../resources/log_out.png"></a>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <form>
                         <input type="text" name="med_id" placeholder="Medicine ID" required>
                         <input type="text" name="batch_num" placeholder="Batch No." required>
-                        <input type="text" name="count" placeholder="Count" required>
+                        <input type="number" name="count" placeholder="Count" required>
                         <input type="text" name="zone" placeholder="Zone" required>
                         <button type="submit">Submit</button>
                     </form>

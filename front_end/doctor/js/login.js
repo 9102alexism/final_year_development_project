@@ -11,17 +11,17 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
             let url = "http://ec23-43-224-111-192.ngrok.io"
             xhr.onload = () => {
                 if(xhr.readyState == 4 && xhr.status == 200){
-                    localStorage.setItem("user_data", JSON.stringify(xhr.response))
+                    sessionStorage.setItem("doctor_data", JSON.stringify(xhr.response))
                     xhr.onload = () => {
                         if(xhr.readyState == 4 && xhr.status == 200){
                             window.location = "/front_end/doctor/html/prescription.html"
                         }
                     }
                     xhr.open("GET", url + "/doctors/prescription")
-                    xhr.setRequestHeader("Authorization", JSON.parse(localStorage.getItem("user_data"))["token"])
+                    xhr.setRequestHeader("Authorization", JSON.parse(sessionStorage.getItem("doctor_data"))["token"])
                     xhr.send()
                 }
-                else localStorage.setItem("user_data", null)
+                else sessionStorage.setItem("doctor_data", null)
             }
             xhr.open("POST", url + "/doctors/login/verify")
             xhr.setRequestHeader("Content-Type", "application/json")

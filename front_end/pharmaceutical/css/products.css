@@ -16,6 +16,9 @@
     font-family: monoid;
     font-size: 15px;
 }
+body{
+    background-color: #f7f7f7;
+}
 .container{
     padding: 10px;
 }
@@ -58,9 +61,20 @@ header{
     box-shadow: var(--nav_items_shadow_clicked);
 }
 #content{
-    width: 60%;
-    margin: auto;
+    min-height: 80vh;
+    margin: 10px;
+    background-color: #ccf3ff;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+#table_content{
+    box-sizing: border-box;
+    display: flex;
+    width: 60%;
+    max-height: 70vh;
+    overflow-y: auto;
 }
 table{
     width: 100%;
@@ -119,4 +133,81 @@ td > img{
 }
 td > img:active{
     box-shadow: inset 2px 2px 6px #c4c4c4, inset -2px -2px 6px #ffffff;
+}
+#promote_content{
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    background-color: #bcffba;
+}
+#promote_content div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#promote_content div{
+    font-size: 20px;
+}
+input{
+    display: block;
+    border: none;
+    height: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+img{
+    display: block;
+    background: #bcffba;
+    box-shadow: 3px 3px 6px #9ad199, -3px -3px 6px #deffdb;
+    height: 20px;
+}
+img:active{
+    box-shadow: inset 3px 3px 6px #9ad199, inset -3px -3px 6px #deffdb;
+}
+@media only screen and (max-device-width: 800px){
+    #navbar{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+    #nv_items{
+        flex-direction: column;
+    }
+    #promote_content{
+        flex-direction: column;
+    }
+}
+@media only screen and (max-device-width: 1000px){
+    tr{
+        flex-wrap: wrap;
+    }
+    td:nth-last-child(1){
+        border: none;
+    }
+}
+@media only screen and (max-width: 800px){
+    #navbar{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+    #nv_items{
+        flex-direction: column;
+    }
+    #promote_content{
+        flex-direction: column;
+    }
+}
+@media only screen and (max-width: 1000px){
+    tr{
+        flex-wrap: wrap;
+    }
+    td:nth-last-child(1){
+        border: none;
+    }
 }

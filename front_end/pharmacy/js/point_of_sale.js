@@ -1,10 +1,13 @@
-// prescriptionId, brandName
-// get (/pharmacies/medicine)
 
 // post (/pharmacies/invoice)
+let user_data = JSON.parse(sessionStorage.getItem("pharmacy_data"))
+document.getElementById("pn").innerHTML = user_data["data"]["name"]
+document.getElementById("pa").innerHTML = user_data["data"]["address"]
+document.getElementById("pp").innerHTML = user_data["data"]["phone"]
 
 var xhr = new XMLHttpRequest()
 xhr.responseType = "json"
+let url = "http://ec23-43-224-111-192.ngrok.io"
 var form = document.forms[0]
 var table = form.getElementsByTagName("table")[0]
 var tbody = form.getElementsByTagName("tbody")[0]
@@ -31,8 +34,10 @@ function add_medicine(){
             }
             else alert("No Such Prescription ID Found")
         }
-        xhr.open("GET", "/")
-        xhr.send()
+        xhr.open("POST", url + "/pharmacies/medicine")
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.setRequestHeader("Authorization", user_data["token"])
+        xhr.send(JSON.stringify({"prescriptionId": form["prescription_id"].value}))
     }
     else if(form["id_name"].value){
         xhr.onload = () => {
@@ -41,13 +46,15 @@ function add_medicine(){
             }
             else alert("No Such Medicine ID/Name Found")
         }
-        xhr.open("GET", "/")
-        xhr.send()
+        xhr.open("POST", url + "/pharmacies/medicine")
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.setRequestHeader("Authorization", user_data["token"])
+        xhr.send(JSON.stringify({"brandName": form["id_name"].value}))
     }
     else{
         alert("No Valid Data Given")
     }
-    add_row(data[0])
+    // add_row(data[0])
 }
 function add_row(_data_available){
     var row_count = table.tBodies[0].rows.length + 1
@@ -163,6 +170,13 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
     }
     else alert("No Medicine Data Found")
 })
+function log_out(event){
+    if(event.childNodes[0].tagName == "IMG"){
+        sessionStorage.removeItem("pharmacy_data")
+        window.location = "/front_end/pharmacy/html/login.html"
+    }
+    return false
+}
 
 // {
 //     "pharmacyId": null, 

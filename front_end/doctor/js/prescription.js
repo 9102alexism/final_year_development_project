@@ -1,6 +1,6 @@
 class Prescription{
     static xhr = new XMLHttpRequest()
-    static user_data = JSON.parse(localStorage.getItem("user_data"))
+    static user_data = JSON.parse(sessionStorage.getItem("doctor_data"))
     static url = "http://ec23-43-224-111-192.ngrok.io"
     complaint
     examinations
@@ -11,6 +11,7 @@ class Prescription{
     add_adv
     advice
     submit_btn
+    log_out_btn
     constructor(){
         Prescription.xhr.responseType = "json"
         this.new_date = new Date()
@@ -137,7 +138,7 @@ class Prescription{
             }
         }
         Prescription.xhr.open("GET", Prescription.url + "/doctors/medicines")
-        Prescription.xhr.setRequestHeader("Authorization", localStorage.getItem("token"))
+        Prescription.xhr.setRequestHeader("Authorization", Prescription.user_data["token"])
         Prescription.xhr.send()
         this.medicine.placeholder = "Medicine"
 
@@ -640,5 +641,12 @@ class Prescription{
             else form.reportValidity()
         }
         else form.reportValidity()
+    }
+    log_out(event){
+        event.preventDefault()
+        if(event.target.tagName == "IMG"){
+            sessionStorage.removeItem("doctor_data")
+            window.location = "/front_end/doctor/html/login.html"
+        }
     }
 }

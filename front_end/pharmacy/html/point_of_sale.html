@@ -19,7 +19,7 @@
                         <li class="no_select"><a href="inventory.html" class="list_styling">Inventory</a></li>
                     </div>
                     <div id="nv_icon">
-                        <a href="#"><img src="../resources/log_out.png"></a>
+                        <a href="#" onclick="return log_out(this)"><img src="../resources/log_out.png"></a>
                     </div>
                 </div>
             </div>
@@ -27,9 +27,9 @@
         <main>
             <div class="container">
                 <div id="upper_section">
-                    <label>Pharmacy Name</label>
-                    <label>Pharmacy Address</label>
-                    <label>Pharmacy Phone Number</label>
+                    <label id="pn">Pharmacy Name</label>
+                    <label id="pa">Pharmacy Address</label>
+                    <label id="pp">Pharmacy Phone Number</label>
                 </div>
                 <div id="lower_section">
                     <form>
