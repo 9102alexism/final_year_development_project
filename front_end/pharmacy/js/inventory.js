@@ -1,8 +1,3 @@
-// post
-// /pharmacies/inventory/data
-
-// get
-// /pharmacies/inventory (table)
 let user_data = JSON.parse(sessionStorage.getItem("pharmacy_data"))
 var xhr = new XMLHttpRequest()
 xhr.responseType = "json"
@@ -24,52 +19,134 @@ document.getElementById("read").addEventListener("click", () => {
     document.getElementById("box_2").style.display = "none"
     document.getElementById("box_2").style.visibility = "hidden"
 
-    var data = [
-        {
-            "id": "1sdngiud",
-            "name": "Napa",
-            "batch_no": "2",
-            "shelf_no": "10",
-            "per_leaf": 20,
-            "unit_price": 3,
-            "quantity": 50
+    xhr.onload = () => {
+        if(xhr.readyState == 4 && xhr.status == 200){
+            let data = xhr.response
+            for(i of data){
+                add_row(i)
+            }
         }
-    ]
-    for(i of data){
-        add_row(i)
+        else{
+            "Data Fetching Failed!"
+        }
     }
+    xhr.open("GET", url + "/pharmacies/inventory")
+    xhr.setRequestHeader("Authorization", user_data["token"])
+    xhr.send()
 })
 document.getElementById("update").addEventListener("click", () => {
-    document.getElementById("box_1").style.display = "none"
-    document.getElementById("box_1").style.visibility = "hidden"
-    document.getElementById("box_2").style.display = "none"
-    document.getElementById("box_2").style.visibility = "hidden"
+    let data = {
+        "medId": form["med_id"].value,
+        "batchNo": form["bat_num"].value,
+        "medName": form["med_name"].value,
+        "medQty": form["med_quantity"].value,
+        "unitPrice": form["unit_price"].value,
+        "medCount": form["med_count"].value,
+        "shelfNumber": form["shelf_num"].value,
+        "type": "update"
+    }
+    xhr.onload = () => {
+        if(xhr.readyState == 4 && xhr.status == 200){
+            alert("Submission Successful")
+            document.getElementById("box_1").style.display = "none"
+            document.getElementById("box_1").style.visibility = "hidden"
+            document.getElementById("box_2").style.display = "none"
+            document.getElementById("box_2").style.visibility = "hidden"
 
-    document.getElementById("update").style.filter = "blur(3px)"
-    document.getElementById("update").style.pointerEvents = "none"
-    document.getElementById("delete").style.filter = "blur(3px)"
-    document.getElementById("delete").style.pointerEvents = "none"
+            document.getElementById("update").style.filter = "blur(3px)"
+            document.getElementById("update").style.pointerEvents = "none"
+            document.getElementById("delete").style.filter = "blur(3px)"
+            document.getElementById("delete").style.pointerEvents = "none"
 
-    document.getElementById("create").style.filter = "none"
-    document.getElementById("create").style.pointerEvents = "visible"
-    document.getElementById("read").style.filter = "none"
-    document.getElementById("read").style.pointerEvents = "visible"
+            document.getElementById("create").style.filter = "none"
+            document.getElementById("create").style.pointerEvents = "visible"
+            document.getElementById("read").style.filter = "none"
+            document.getElementById("read").style.pointerEvents = "visible"
+        }
+        else{
+            alert("Data Submission Not Successful!")
+            form["med_name"].value = ""
+            form["med_id"].value = ""
+            form["bat_num"].value = ""
+            form["med_count"].value = ""
+            form["unit_price"].value = ""
+            document.getElementById("box_1").style.display = "none"
+            document.getElementById("box_1").style.visibility = "hidden"
+            document.getElementById("box_2").style.display = "none"
+            document.getElementById("box_2").style.visibility = "hidden"
+
+            document.getElementById("update").style.filter = "blur(3px)"
+            document.getElementById("update").style.pointerEvents = "none"
+            document.getElementById("delete").style.filter = "blur(3px)"
+            document.getElementById("delete").style.pointerEvents = "none"
+
+            document.getElementById("create").style.filter = "none"
+            document.getElementById("create").style.pointerEvents = "visible"
+            document.getElementById("read").style.filter = "none"
+            document.getElementById("read").style.pointerEvents = "visible"
+        }
+    }
+    xhr.open("POST", url + "/pharmacies/inventory/submit")
+    xhr.setRequestHeader("Content-Type", "application/json")
+    xhr.setRequestHeader("Authorization", user_data["token"])
+    xhr.send(JSON.stringify(data))
 })
 document.getElementById("delete").addEventListener("click", () => {
-    document.getElementById("box_1").style.display = "none"
-    document.getElementById("box_1").style.visibility = "hidden"
-    document.getElementById("box_2").style.display = "none"
-    document.getElementById("box_2").style.visibility = "hidden"
+    let data = {
+        "medId": form["med_id"].value,
+        "batchNo": form["bat_num"].value,
+        "medName": form["med_name"].value,
+        "medQty": form["med_quantity"].value,
+        "unitPrice": form["unit_price"].value,
+        "medCount": form["med_count"].value,
+        "shelfNumber": form["shelf_num"].value,
+        "type": "delete"
+    }
+    xhr.onload = () => {
+        if(xhr.readyState == 4 && xhr.status == 200){
+            alert("Submission Successful")
+            document.getElementById("box_1").style.display = "none"
+            document.getElementById("box_1").style.visibility = "hidden"
+            document.getElementById("box_2").style.display = "none"
+            document.getElementById("box_2").style.visibility = "hidden"
 
-    document.getElementById("update").style.filter = "blur(3px)"
-    document.getElementById("update").style.pointerEvents = "none"
-    document.getElementById("delete").style.filter = "blur(3px)"
-    document.getElementById("delete").style.pointerEvents = "none"
+            document.getElementById("update").style.filter = "blur(3px)"
+            document.getElementById("update").style.pointerEvents = "none"
+            document.getElementById("delete").style.filter = "blur(3px)"
+            document.getElementById("delete").style.pointerEvents = "none"
 
-    document.getElementById("create").style.filter = "none"
-    document.getElementById("create").style.pointerEvents = "visible"
-    document.getElementById("read").style.filter = "none"
-    document.getElementById("read").style.pointerEvents = "visible"
+            document.getElementById("create").style.filter = "none"
+            document.getElementById("create").style.pointerEvents = "visible"
+            document.getElementById("read").style.filter = "none"
+            document.getElementById("read").style.pointerEvents = "visible"
+        }
+        else{
+            alert("Data Submission Not Successful!")
+            form["med_name"].value = ""
+            form["med_id"].value = ""
+            form["bat_num"].value = ""
+            form["med_count"].value = ""
+            form["unit_price"].value = ""
+            document.getElementById("box_1").style.display = "none"
+            document.getElementById("box_1").style.visibility = "hidden"
+            document.getElementById("box_2").style.display = "none"
+            document.getElementById("box_2").style.visibility = "hidden"
+
+            document.getElementById("update").style.filter = "blur(3px)"
+            document.getElementById("update").style.pointerEvents = "none"
+            document.getElementById("delete").style.filter = "blur(3px)"
+            document.getElementById("delete").style.pointerEvents = "none"
+
+            document.getElementById("create").style.filter = "none"
+            document.getElementById("create").style.pointerEvents = "visible"
+            document.getElementById("read").style.filter = "none"
+            document.getElementById("read").style.pointerEvents = "visible"
+        }
+    }
+    xhr.open("POST", url + "/pharmacies/inventory/submit")
+    xhr.setRequestHeader("Content-Type", "application/json")
+    xhr.setRequestHeader("Authorization", user_data["token"])
+    xhr.send(JSON.stringify(data))
 })
 document.getElementById("search").addEventListener("click", () => {
     let medId = document.getElementById("medId").value
@@ -117,6 +194,15 @@ document.body.addEventListener("click", (event) => {
         document.getElementById("update").style.pointerEvents = "visible"
         document.getElementById("delete").style.filter = "none"
         document.getElementById("delete").style.pointerEvents = "visible"
+
+        let data = event.target.closest("tr").childNodes
+        form["med_id"].value = data[0].innerHTML
+        form["med_name"].value = data[1].innerHTML
+        form["bat_num"].value = data[2].innerHTML
+        form["shelf_num"].value = data[3].innerHTML
+        form["med_count"].value = data[4].innerHTML
+        form["unit_price"].value = data[5].innerHTML
+        form["med_quantity"].value = data[6].innerHTML
     }
 })
 function add_row(_data_available){
@@ -131,13 +217,13 @@ function add_row(_data_available){
     var cell_7 = row.insertCell(6)
     var cell_8 = row.insertCell(7)
 
-    cell_1.innerHTML = _data_available["id"]
-    cell_2.innerHTML = _data_available["name"]
-    cell_3.innerHTML = _data_available["batch_no"]
-    cell_4.innerHTML = _data_available["shelf_no"]
-    cell_5.innerHTML = _data_available["per_leaf"]
-    cell_6.innerHTML = _data_available["unit_price"]
-    cell_7.innerHTML = _data_available["quantity"]
+    cell_1.innerHTML = _data_available["medId"]
+    cell_2.innerHTML = _data_available["medName"]
+    cell_3.innerHTML = _data_available["batchNo"]
+    cell_4.innerHTML = _data_available["shelfNumber"]
+    cell_5.innerHTML = _data_available["medCount"]
+    cell_6.innerHTML = _data_available["unitPrice"]
+    cell_7.innerHTML = _data_available["medQty"]
     cell_8.innerHTML = `<img class="rem_med" src="../resources/edit_2.png">`
 }
 document.getElementsByTagName("button")[0].addEventListener("click", (event) => {
@@ -150,24 +236,16 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
         "unitPrice": form["unit_price"].value,
         "medCount": form["med_count"].value,
         "shelfNumber": form["shelf_num"].value,
-        "type": "add"
+        "type": "create"
     }
     xhr.onload = () => {
         if(xhr.readyState == 4 && xhr.status == 200){
             alert("Submission Successful")
-            document.getElementById("box_2").style.display = "none"
-            document.getElementById("box_2").style.visibility = "hidden"
+            location.reload(true)
         }
         else{
             alert("Data Submission Not Successful!")
-            form["med_name"].value = ""
-            form["med_id"].value = ""
-            form["bat_num"].value = ""
-            form["med_count"].value = ""
-            form["unit_price"].value = ""
-
-            document.getElementById("box_2").style.display = "none"
-            document.getElementById("box_2").style.visibility = "hidden"
+            location.reload(true)
         }
     }
     xhr.open("POST", url + "/pharmacies/inventory/submit")

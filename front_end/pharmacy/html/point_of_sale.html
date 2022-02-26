@@ -35,7 +35,8 @@
                     <form>
                         <div class="mini_group">
                             <input type="text" name="prescription_id", placeholder="Prescription ID">
-                            <input type="text" name="id_name", placeholder="Medicine ID/Name">
+                            <input list="medicines" name="id_name" placeholder="Medicine ID/Name">
+                            <datalist id="medicines"></datalist>
                             <img src="../resources/add.png" onclick="add_medicine()">
                         </div>
                         <div id="med_tb">

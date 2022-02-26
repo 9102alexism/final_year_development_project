@@ -1,9 +1,19 @@
 
 // post (/pharmacies/invoice)
+var today = new Date();
+var date = today.getFullYear() + "-" +(today.getMonth()+1) + "-" + today.getDate();
+
 let user_data = JSON.parse(sessionStorage.getItem("pharmacy_data"))
 document.getElementById("pn").innerHTML = user_data["data"]["name"]
 document.getElementById("pa").innerHTML = user_data["data"]["address"]
 document.getElementById("pp").innerHTML = user_data["data"]["phone"]
+let medicine = user_data["meds"]
+var medicine_list = document.getElementById("medicines")
+for(var med of medicine){
+    var opt = document.createElement("option")
+    opt.value = med["medName"]
+    medicine_list.appendChild(opt)
+}
 
 var xhr = new XMLHttpRequest()
 xhr.responseType = "json"
@@ -16,45 +26,29 @@ var total = 0
 var discount_percent = table.getElementsByTagName("tfoot")[0].rows[0].cells[1]
 var discount = 0
 
-var data = [
-    {
-        "name": "Napa",
-        "shelf_no": 2,
-        "available": 20,
-        "quantity": 0,
-        "unit_price": 2
-    }
-]
-
 function add_medicine(){
     if(form["prescription_id"].value && !form["id_name"].value){
-        xhr.onload = () => {
-            if(xhr.readyState == 4 && xhr.status == 200){
-                console.log(xhr.response)
-            }
-            else alert("No Such Prescription ID Found")
-        }
-        xhr.open("POST", url + "/pharmacies/medicine")
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.setRequestHeader("Authorization", user_data["token"])
-        xhr.send(JSON.stringify({"prescriptionId": form["prescription_id"].value}))
+        
     }
     else if(form["id_name"].value){
-        xhr.onload = () => {
-            if(xhr.readyState == 4 && xhr.status == 200){
-                console.log(xhr.response)
+        for(var med of medicine){
+            if(med["medName"] == form["id_name"].value || med["medId"] == form["id_name"].value){
+                let data = {
+                    "name": med["medName"],
+                    "shelf_no": med["shelfNumber"],
+                    "available": med["medQty"],
+                    "quantity": 0,
+                    "unit_price": med["unitPrice"]
+                }
+                add_row(data)
+                return
             }
-            else alert("No Such Medicine ID/Name Found")
         }
-        xhr.open("POST", url + "/pharmacies/medicine")
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.setRequestHeader("Authorization", user_data["token"])
-        xhr.send(JSON.stringify({"brandName": form["id_name"].value}))
+        alert("Medicine ID/Name Not Found")
     }
     else{
         alert("No Valid Data Given")
     }
-    // add_row(data[0])
 }
 function add_row(_data_available){
     var row_count = table.tBodies[0].rows.length + 1
@@ -91,9 +85,9 @@ document.body.addEventListener("click", (event) => {
         }
     }
     else if(event.target.className === "change_quantity"){
-        for(var i of data){
-            if(i["name"] == event.target.closest("tr").cells[1].innerHTML){
-                event.target.closest("tr").cells[5].innerHTML = `${i["unit_price"]*event.target.value} BDT`
+        for(var i of medicine){
+            if(i["medName"] == event.target.closest("tr").cells[1].innerHTML){
+                event.target.closest("tr").cells[5].innerHTML = `${(i["unitPrice"]*event.target.value).toFixed(2)} BDT`
                 temp = 0
                 for(var row of table.tBodies[0].rows){
                     temp += parseInt(row.cells[5].innerHTML.split(" ")[0])
@@ -114,9 +108,9 @@ document.body.addEventListener("click", (event) => {
 document.body.addEventListener("keyup", (event) => {
     // event.key == "Enter" will stop live search
     if(event.target.className === "change_quantity" && event.key == "Enter"){
-        for(var i of data){
-            if(i["name"] == event.target.closest("tr").cells[1].innerHTML && (event.target.value >= 0 && event.target.value <= i["available"])){
-                event.target.closest("tr").cells[5].innerHTML = `${i["unit_price"]*event.target.value} BDT`
+        for(var i of medicine){
+            if(i["medName"] == event.target.closest("tr").cells[1].innerHTML && (event.target.value >= 0 && event.target.value <= i["medQty"])){
+                event.target.closest("tr").cells[5].innerHTML = `${(i["unitPrice"]*event.target.value).toFixed(2)} BDT`
                 temp = 0
                 for(var row of table.tBodies[0].rows){
                     temp += parseInt(row.cells[5].innerHTML.split(" ")[0])
@@ -144,16 +138,21 @@ document.body.addEventListener("keyup", (event) => {
 })
 document.getElementsByTagName("button")[0].addEventListener("click", (event) => {
     event.preventDefault()
-
     var data = {
-        "pharmacyId": null, 
-        "date": null
+        "pharmacyId": user_data["data"]["pharmacyId"], 
+        "date": date
     }
     if(table.tBodies[0].rows.length > 0){
         data["medicine"] = []
         for(var row of table.tBodies[0].rows){
             var med = {}
             med["id"] = NaN
+            for(var i of medicine){
+                if(i["medName"] == row.cells[1].innerHTML){
+                    med["id"] = i["medId"]
+                    break
+                }
+            }
             med["name"] = row.cells[1].innerHTML
             med["totalPurchased"] = row.cells[4].childNodes[0].value
             data["medicine"].push(med)
@@ -177,16 +176,3 @@ function log_out(event){
     }
     return false
 }
-
-// {
-//     "pharmacyId": null, 
-//     "date": null,
-//     "medicine": [
-//         {
-//             "id": null,
-//             "name": SVGNumberList,
-//             "totalPurchased": null
-//         }
-//     ],
-//     "total": null
-// }
