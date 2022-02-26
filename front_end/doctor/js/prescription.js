@@ -12,6 +12,7 @@ class Prescription{
     advice
     submit_btn
     log_out_btn
+    static medicines
     constructor(){
         Prescription.xhr.responseType = "json"
         this.new_date = new Date()
@@ -125,12 +126,11 @@ class Prescription{
         this.examinations.required = true
         this.diagnosis.required = true
         // right_section
-        var data_available = []
         Prescription.xhr.onload = function(){
             if(this.readyState == 4 && this.status == 200){
-                data_available = this.response
+                Prescription.medicines = this.response
                 var medicine_list = document.getElementById("medicines")
-                for(var medicine of data_available){
+                for(var medicine of Prescription.medicines){
                     var opt = document.createElement("option")
                     opt.value = medicine["brandName"]
                     medicine_list.appendChild(opt)
@@ -539,10 +539,15 @@ class Prescription{
                     alert("Wrong Data In Table Instruction")
                     return null
                 }
-                med["id"] = NaN
+                for(let medicine of Prescription.medicines){
+                    if(row.cells[1].innerHTML == medicine["brandName"]){
+                        med["id"] = medicine["medId"]
+                        break
+                    }
+                }
                 med["name"] = row.cells[1].innerHTML
                 med["duration"] = row.cells[3].innerHTML
-                med["total_count"] = temp_arr.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+                med["total_count"] = parseInt(med["duration"]) * temp_arr.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
                 arr.push(med)
             }
             return arr
@@ -644,7 +649,7 @@ class Prescription{
     }
     log_out(event){
         event.preventDefault()
-        if(event.target.tagName == "IMG"){
+        if(event.target.id == "l_out"){
             sessionStorage.removeItem("doctor_data")
             window.location = "/front_end/doctor/html/login.html"
         }

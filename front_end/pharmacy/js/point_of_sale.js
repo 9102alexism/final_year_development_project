@@ -1,5 +1,3 @@
-
-// post (/pharmacies/invoice)
 var today = new Date();
 var date = today.getFullYear() + "-" +(today.getMonth()+1) + "-" + today.getDate();
 
@@ -28,7 +26,35 @@ var discount = 0
 
 function add_medicine(){
     if(form["prescription_id"].value && !form["id_name"].value){
-        
+        data = {
+            "prescriptionId": form["prescription_id"].value
+        }
+        xhr.onload = () => {
+            if(xhr.readyState == 4 && xhr.status == 200){
+                let prescription = xhr.response
+                for(i of prescription["medicine"]){
+                    let data = {}
+                    for(j of medicine){
+                        if(j["medId"] == i["id"]){
+                            data["name"] = j["medName"]
+                            data["shelf_no"] = j["shelfNumber"]
+                            data["available"] = j["medQty"]
+                            data["quantity"] = i["total_count"]
+                            data["unit_price"] = j["unitPrice"]
+                            break
+                        }
+                    }
+                    add_row(data)
+                }
+            }
+            else{
+                alert("No Such Prescription Found")
+            }
+        }
+        xhr.open("POST", url + "/pharmacies/medicine")
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.setRequestHeader("Authorization", user_data["token"])
+        xhr.send(JSON.stringify(data))
     }
     else if(form["id_name"].value){
         for(var med of medicine){
@@ -67,7 +93,7 @@ function add_row(_data_available){
     cell_3.innerHTML = _data_available["shelf_no"]
     cell_4.innerHTML = _data_available["available"]
     cell_5.innerHTML = `<input type="number" class="change_quantity" name="quantity" min="0" max="${_data_available["available"]}" value=${_data_available["quantity"]}>`
-    cell_6.innerHTML = `${_data_available["unit_price"]*_data_available["quantity"]} BDT`
+    cell_6.innerHTML = `${(_data_available["unit_price"]*_data_available["quantity"]).toFixed(2)} BDT`
     cell_7.innerHTML = `<img class="rem_med" src="../resources/sub.png">`
 
     form["prescription_id"].value = ""
@@ -143,29 +169,41 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
         "date": date
     }
     if(table.tBodies[0].rows.length > 0){
-        data["medicine"] = []
+        data["medicines"] = []
         for(var row of table.tBodies[0].rows){
             var med = {}
-            med["id"] = NaN
+            med["medId"] = NaN
             for(var i of medicine){
                 if(i["medName"] == row.cells[1].innerHTML){
-                    med["id"] = i["medId"]
+                    med["medId"] = i["medId"]
                     break
                 }
             }
             med["name"] = row.cells[1].innerHTML
             med["totalPurchased"] = row.cells[4].childNodes[0].value
-            data["medicine"].push(med)
+            data["medicines"].push(med)
         }
         data["total"] = tfoot_price.innerHTML.split(" ")[0]
     }
     else{
-        data["medicine"] = null
+        data["medicines"] = null
         data["total"] = null
     }
 
     if(data["total"] > 0){
-        console.log(data)
+        xhr.onload = () => {
+            if(xhr.readyState == 4 && xhr.status == 200){
+                alert("Successful")
+                location.reload(true)
+            }
+            else{
+                alert("Failed")
+            }
+        }
+        xhr.open("POST", url + "/pharmacies/invoice")
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.setRequestHeader("Authorization", user_data["token"])
+        xhr.send(JSON.stringify(data))
     }
     else alert("No Medicine Data Found")
 })

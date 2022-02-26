@@ -1,0 +1,73 @@
+#print{
+    width: 50%;
+    display: none;
+    visibility: hidden;
+    margin: auto;
+}
+#p1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid black;
+    border-bottom: 2px dashed black;
+    gap: 5px;
+}
+#p1 label{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+#p2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+#head{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+}
+#head label{
+    text-decoration: underline;
+    width: 100%;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+#body{
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 2px dashed black;
+}
+.row{
+    width: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+}
+.row > label{
+    width: 100%;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+#p3{
+    display: flex;
+    padding: 10px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 2px dashed black;
+}
+#p3 label{
+    width: 100%;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+@media print{ 
+    #print{
+        display: block;
+        visibility: visible;
+    }
+}
