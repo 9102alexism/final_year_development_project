@@ -8,8 +8,8 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
     var data = {
         "medId": form["med_id"].value,
         "batchNumber": form["batch_num"].value,
-        "zone": form["count"].value,
-        "count": form["zone"].value
+        "zone": form["zone"].value,
+        "count": form["count"].value
     }
     xhr.onload = () => {
         if(xhr.readyState == 4 && xhr.status == 200){

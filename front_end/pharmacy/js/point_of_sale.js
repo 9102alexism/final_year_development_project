@@ -43,7 +43,7 @@ function add_medicine(){
                             break
                         }
                     }
-                    add_row(data)
+                    if(data.length > 0) add_row(data)
                 }
             }
             else{

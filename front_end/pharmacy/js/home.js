@@ -32,10 +32,6 @@ const ctx_1 = document.getElementById("chart_1").getContext("2d")
 const ctx_2 = document.getElementById("chart_2").getContext("2d")
 
 const labels = [
-    "2012",
-    "2013",
-    "2014",
-    "2015",
     "2016",
     "2017",
     "2018",
@@ -46,8 +42,8 @@ const data_1 = {
     labels,
     datasets: [
         {
-            data: [211, 326, 165, 350, 420, 370, 500, 375, 415],
-            label: "Minecrafty Sales",
+            data: [211, 326, 165, 350, 420],
+            label: "Monthly Sale",
             backgroundColor: "#fff",
             borderColor: "#008a8a"
         }
@@ -66,9 +62,9 @@ const data_2 = {
     labels,
     datasets: [
         {
-            data: [211, 326, 165, 350, 420, 370, 500, 375, 415],
-            label: "Minecrafty Sales",
-            backgroundColor: ["blue", "red", "green"],
+            data: [211, 326, 165, 350, 420],
+            label: "Top 5 Product",
+            backgroundColor: ["green"],
             borderColor: "#008a8a"
         }
     ]
