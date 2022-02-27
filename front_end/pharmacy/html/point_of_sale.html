@@ -32,6 +32,7 @@
                     <label id="pp">Pharmacy Phone Number</label>
                 </div>
                 <div id="lower_section">
+                    <div id="reader"></div>
                     <form>
                         <div class="mini_group">
                             <input type="text" name="prescription_id", placeholder="Prescription ID">
@@ -71,4 +72,15 @@
         <footer></footer>
     </body>
     <script src="../js/point_of_sale.js"></script>
+    <script src="../js/html5-qrcode.min.js"></script>
+    <script>
+        function onScanSuccess(decodedText, decodedResult) {
+            // Handle on success condition with the decoded text or result.
+            document.forms[0]["prescription_id"].value = decodedText
+        }
+
+        var html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", { fps: 10, qrbox: 250 });
+        html5QrcodeScanner.render(onScanSuccess);
+    </script>
 </html>

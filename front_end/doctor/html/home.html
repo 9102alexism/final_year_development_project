@@ -19,7 +19,7 @@
                         <li class="no_select"><a href="prescription.html" class="list_styling">Prescription</a></li>
                     </div>
                     <div id="nv_icon">
-                        <a href="#"><img id="l_out "src="../resources/log_out.png"></a>
+                        <a href="#"><img id="l_out" src="../resources/log_out.png"></a>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     <div id="dashboard">
                         <div id="item_1">
                             <label id="amount">0</label>
-                            <label id="total_patients">Total Patients</label>
+                            <label id="total_patients" onclick="hulu()">Total Patients</label>
                         </div>
                     </div>
                     <div id="history">
@@ -45,19 +45,11 @@
                             <tbody></tbody>
                         </table>
                     </div>
-                    <!-- <div id="graph_box">
-                        <div class="graph">
-                            <canvas id="chart_1"></canvas>
-                        </div>
-                        <div class="graph">
-                            <canvas id="chart_2"></canvas>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </main>
         <footer></footer>
-        <!-- <div id="print">
+        <div id="print">
             <div id="p1">
                 <label id="dn"></label>
                 <label id="dd"></label>
@@ -67,56 +59,51 @@
             </div>
             <div id="p2">
                 <div id="head">
-                    <label>PID: 12345</label>
-                    <label>Name: Fahim</label>
-                    <label>Gender: Male</label>
-                    <label>Age: 27 Y</label>
-                    <label>Date: 2022-02-26</label>
+                    <label id="p_name"></label>
+                    <label id="p_gender"></label>
+                    <label id="p_age"></label>
+                    <label id="p_date"></label>
                 </div>
             </div>
             <div id="body">
                 <div id="p3">
                     <div id="block_1">
                         <label>Chief Complaint</label>
-                        <label>&#8226 aa</label>
+                        <div id="comp" disabled></div>
                     </div>
                     <div id="block_2">
                         <label>On Examinations</label>
-                        <label>&#8226 aa</label>
+                        <div id="exam"></div>
                     </div>
                     <div id="block_3">
                         <label>Diagnosis</label>
-                        <label>&#8226 aa</label>
+                        <div id="diag"></div>
                     </div>
                     <div id="block_4">
                         <label>Investigation</label>
-                        <label>&#8226 aa</label>
+                        <div id="inv"></div>
                     </div>
                 </div>
                 <div id="p4">
                     <div id="first">
-                        <div class="row">
-                            <label>Romycin 500mg</label>
-                            <label>0+0+1</label>
-                        </div>
-                        <div class="row">
-                            <label>Fexomin 500mg</label>
-                            <label>0+0+1</label>
-                        </div>
+                        <label>Rx.</label>
                     </div>
                     <div id="middle">
                         <label>Advices</label>
-                        <label>1. hau</label>
-                        <label>2. mau</label>
+                        <div id="adv"></div>
                     </div>
                     <div id="last">
                         <label>Follow-Up</label>
-                        <label>1 month later</label>
+                    </div>
+                    <div id="qr_block">
+                        <div id="qrcode"></div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </body>
     <script src="../js/home.js"></script>
     <script src="../js/print.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/qrcode.js"></script>
 </html>

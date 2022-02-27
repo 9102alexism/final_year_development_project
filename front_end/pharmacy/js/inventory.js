@@ -1,7 +1,7 @@
 let user_data = JSON.parse(sessionStorage.getItem("pharmacy_data"))
 var xhr = new XMLHttpRequest()
 xhr.responseType = "json"
-let url = "http://ec23-43-224-111-192.ngrok.io"
+let url = "http://3d94-43-224-111-192.ngrok.io"
 var form = document.forms[0]
 var tbody = document.getElementsByTagName("tbody")[0]
 
@@ -11,6 +11,9 @@ document.getElementById("create").addEventListener("click", () => {
 
     document.getElementById("box_2").style.display = "flex"
     document.getElementById("box_2").style.visibility = "visible"
+
+    document.getElementsByTagName("button")[0].style.display = "block"
+    document.getElementsByTagName("button")[0].style.visibility = "visible"
 })
 document.getElementById("read").addEventListener("click", () => {
     document.getElementById("box_1").style.display = "none"
@@ -22,12 +25,13 @@ document.getElementById("read").addEventListener("click", () => {
     xhr.onload = () => {
         if(xhr.readyState == 4 && xhr.status == 200){
             let data = xhr.response
+            tbody.innerHTML = ""
             for(i of data){
                 add_row(i)
             }
         }
         else{
-            "Data Fetching Failed!"
+            alert("Data Fetching Failed!")
         }
     }
     xhr.open("GET", url + "/pharmacies/inventory")
@@ -195,6 +199,9 @@ document.body.addEventListener("click", (event) => {
         document.getElementById("delete").style.filter = "none"
         document.getElementById("delete").style.pointerEvents = "visible"
 
+        document.getElementsByTagName("button")[0].style.display = "none"
+        document.getElementsByTagName("button")[0].style.visibility = "hidden"
+
         let data = event.target.closest("tr").childNodes
         form["med_id"].value = data[0].innerHTML
         form["med_name"].value = data[1].innerHTML
@@ -241,6 +248,8 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
     xhr.onload = () => {
         if(xhr.readyState == 4 && xhr.status == 200){
             alert("Submission Successful")
+            document.getElementsByTagName("button")[0].style.display = "none"
+            document.getElementsByTagName("button")[0].style.visibility = "hidden"
             location.reload(true)
         }
         else{

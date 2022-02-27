@@ -1,7 +1,7 @@
 class Prescription{
     static xhr = new XMLHttpRequest()
     static user_data = JSON.parse(sessionStorage.getItem("doctor_data"))
-    static url = "http://ec23-43-224-111-192.ngrok.io"
+    static url = "http://3d94-43-224-111-192.ngrok.io"
     complaint
     examinations
     diagnosis
@@ -547,7 +547,7 @@ class Prescription{
                 }
                 med["name"] = row.cells[1].innerHTML
                 med["duration"] = row.cells[3].innerHTML
-                med["total_count"] = parseInt(med["duration"]) * temp_arr.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+                med["total_count"] = temp_arr.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
                 arr.push(med)
             }
             return arr

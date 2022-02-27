@@ -2,7 +2,7 @@ var form = document.forms[0]
 var xhr = new XMLHttpRequest()
 xhr.responseType = "json"
 
-let url = "http://ec23-43-224-111-192.ngrok.io"
+let url = "http://3d94-43-224-111-192.ngrok.io"
 
 document.getElementsByName("user_type")[0].addEventListener("change", (event) => {
     if(event.target.value == "doctor"){

@@ -72,7 +72,7 @@ main{
     display: flex;
     justify-content: center;
     gap: 5px;
-    background-color: #a2ff63;
+    background-color: #daffc1;
     padding: 10px;
 }
 #item_1{
@@ -81,7 +81,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #98ff53;
+    background-color: #c5ff9f;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     color: #4d4d4d;
 }
@@ -120,8 +120,7 @@ table{
 }
 thead{
     padding: 5px;
-    background: #aa0080;
-    color: #efefef;
+    background: #d7ecff;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
     font-weight: bold;

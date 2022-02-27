@@ -158,7 +158,7 @@ input{
     font-size: 20px;
     text-align: center;
 }
-img{
+#promote_content img{
     display: block;
     background: #bcffba;
     box-shadow: 3px 3px 6px #9ad199, -3px -3px 6px #deffdb;

@@ -10,7 +10,7 @@ var tbody = document.getElementsByTagName("tbody")[0]
 
 var xhr = new XMLHttpRequest()
 xhr.responseType = "json"
-let url = "http://ec23-43-224-111-192.ngrok.io"
+let url = "http://3d94-43-224-111-192.ngrok.io"
 xhr.onload = () => {
     if(xhr.status == 200 && xhr.readyState == 4){
         history = xhr.response
@@ -107,6 +107,7 @@ function print(obj){
                 }
                 document.getElementById("body").innerHTML = html
                 document.getElementById("total").innerHTML = data["total"].toFixed(2) + " BDT"
+                break
             }
         }
         printJS({

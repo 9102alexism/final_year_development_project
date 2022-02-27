@@ -8,7 +8,7 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
     let password = form["pwd"].value
     if(email.length > 5){
         if(password.length > 5){
-            let url = "http://ec23-43-224-111-192.ngrok.io"
+            let url = "http://3d94-43-224-111-192.ngrok.io"
             xhr.onload = () => {
                 if(xhr.readyState == 4 && xhr.status == 200){
                     sessionStorage.setItem("pharmaceutical_data", JSON.stringify(xhr.response))

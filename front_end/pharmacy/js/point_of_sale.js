@@ -14,7 +14,7 @@ for(var med of medicine){
 
 var xhr = new XMLHttpRequest()
 xhr.responseType = "json"
-let url = "http://ec23-43-224-111-192.ngrok.io"
+let url = "http://3d94-43-224-111-192.ngrok.io"
 var form = document.forms[0]
 var table = form.getElementsByTagName("table")[0]
 var tbody = form.getElementsByTagName("tbody")[0]
@@ -38,12 +38,12 @@ function add_medicine(){
                             data["name"] = j["medName"]
                             data["shelf_no"] = j["shelfNumber"]
                             data["available"] = j["medQty"]
-                            data["quantity"] = i["total_count"]
+                            data["quantity"] = i["total_count"] * i["duration"]
                             data["unit_price"] = j["unitPrice"]
                             break
                         }
                     }
-                    if(data.length > 0) add_row(data)
+                    if(Object.keys(data).length > 0) add_row(data)
                 }
             }
             else{

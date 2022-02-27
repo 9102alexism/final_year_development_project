@@ -92,7 +92,7 @@ main{
     display: flex;
     justify-content: center;
     gap: 5px;
-    background-color: #63ccff;
+    background-color: #63ccff4a;
     padding: 10px;
 }
 #item_1{
@@ -101,7 +101,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #56c8ff;
+    background-color: #c0ebff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     color: #2b2b2b;
 }
@@ -130,8 +130,7 @@ table{
 }
 thead{
     padding: 5px;
-    background: #0062aa;
-    color: #efefef;
+    background: #88cdff;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
     font-weight: bold;

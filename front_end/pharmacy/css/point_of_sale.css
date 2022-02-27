@@ -105,6 +105,21 @@ main > div{
     flex-wrap: wrap;
     padding: 5px;
     background-color: var(--lower_section_color);
+    gap: 15px;
+}
+#reader{
+    width: 30%;
+    margin: auto;
+    background-color: white;
+    border: none !important;
+    border-bottom: 2px solid var(--border_color) !important;
+    border-right: 2px solid var(--border_color) !important;
+    border-radius: 10px;
+}
+#reader button{
+    background-color: white;
+    box-shadow: none;
+    border-radius: 0;
 }
 #lower_section .mini_group{
     display: flex;
