@@ -1,5 +1,4 @@
-var today = new Date();
-var date = today.getFullYear() + "-" +(today.getMonth()+1) + "-" + today.getDate();
+var date = new Date();
 
 let user_data = JSON.parse(sessionStorage.getItem("pharmacy_data"))
 document.getElementById("pn").innerHTML = user_data["data"]["name"]

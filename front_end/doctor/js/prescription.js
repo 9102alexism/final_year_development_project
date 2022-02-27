@@ -162,7 +162,7 @@ class Prescription{
         }
         this.adv.placeholder = "Advice"
 
-        var data_available = ["1 week", "1 month"]
+        var data_available = ["1 week later", "1 month later"]
         var follow_up_list = document.getElementById("follow_ups")
         for(var follow_up of data_available){
             var opt = document.createElement("option")
@@ -563,7 +563,7 @@ class Prescription{
 
         var data = {
             "department": form["department"].value,
-            "date": form["date"].value
+            "date": new Date()
         }
         // name_validation
         data["patient_name"] = Prescription.name_validation(form["patient_name"])
@@ -614,6 +614,7 @@ class Prescription{
                                                     if(data["medicine"]){
                                                         Prescription.xhr.onload = function(){
                                                             if(this.readyState == 4 && this.status == 200){
+                                                                alert(Prescription.xhr.response)
                                                                 location.reload()
                                                             }
                                                             else alert("Failed")
@@ -648,8 +649,8 @@ class Prescription{
         else form.reportValidity()
     }
     log_out(event){
-        event.preventDefault()
         if(event.target.id == "l_out"){
+            event.preventDefault()
             sessionStorage.removeItem("doctor_data")
             window.location = "/front_end/doctor/html/login.html"
         }

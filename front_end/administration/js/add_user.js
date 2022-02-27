@@ -1,8 +1,8 @@
 var form = document.forms[0]
+var xhr = new XMLHttpRequest()
+xhr.responseType = "json"
 
-// url -> /admin/pharmacySignup
-// url -> /admin/doctorSignup
-// url -> /admin/pharmaSignup
+let url = "http://ec23-43-224-111-192.ngrok.io"
 
 document.getElementsByName("user_type")[0].addEventListener("change", (event) => {
     if(event.target.value == "doctor"){
@@ -90,8 +90,18 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
                                                                 "userId": form["user_id"][0].value,
                                                                 "password": form["password"][0].value
                                                             }
-                                                            console.log(data)
-                                                            form.reset()
+                                                            xhr.onload = () => {
+                                                                if(xhr.readyState == 4 && xhr.status == 200){
+                                                                    alert("Success!")
+                                                                    location.reload(true)
+                                                                }
+                                                                else{
+                                                                    alert("Failed")
+                                                                }
+                                                            }
+                                                            xhr.open("POST", url + "/admin/doctorSignup")
+                                                            xhr.setRequestHeader("Content-Type", "application/json")
+                                                            xhr.send(JSON.stringify(data))
                                                         }
                                                         else alert("Some Data Is Missing!")
                                                     }
@@ -138,8 +148,18 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
                                             "password": form["password"][1].value,
                                             "zone": form["zone"].value
                                         }
-                                        console.log(data)
-                                        form.reset()
+                                        xhr.onload = () => {
+                                            if(xhr.readyState == 4 && xhr.status == 200){
+                                                alert("Success!")
+                                                location.reload(true)
+                                            }
+                                            else{
+                                                alert("Failed")
+                                            }
+                                        }
+                                        xhr.open("POST", url + "/admin/pharmacySignup")
+                                        xhr.setRequestHeader("Content-Type", "application/json")
+                                        xhr.send(JSON.stringify(data))
                                     }
                                     else alert("Some Data Is Missing!")
                                 }
@@ -170,8 +190,18 @@ document.getElementsByTagName("button")[0].addEventListener("click", (event) => 
                                 "userId": form["user_id"][2].value,
                                 "password": form["password"][2].value,
                             }
-                            console.log(data)
-                            form.reset()
+                            xhr.onload = () => {
+                                if(xhr.readyState == 4 && xhr.status == 200){
+                                    alert("Success!")
+                                    location.reload(true)
+                                }
+                                else{
+                                    alert("Failed")
+                                }
+                            }
+                            xhr.open("POST", url + "/admin/pharmaSignup")
+                            xhr.setRequestHeader("Content-Type", "application/json")
+                            xhr.send(JSON.stringify(data))
                         }
                         else alert("Some Data Is Missing!")
                     }

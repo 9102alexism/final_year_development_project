@@ -3,56 +3,30 @@ document.getElementById("pn").innerHTML = user_data["data"]["name"]
 document.getElementById("pa").innerHTML = user_data["data"]["address"]
 document.getElementById("pp").innerHTML = user_data["data"]["phone"]
 
+let total_count = 0
+
+let history = []
+var tbody = document.getElementsByTagName("tbody")[0]
+
 var xhr = new XMLHttpRequest()
 xhr.responseType = "json"
 let url = "http://ec23-43-224-111-192.ngrok.io"
 xhr.onload = () => {
     if(xhr.status == 200 && xhr.readyState == 4){
-        console.log(xhr.response)
+        history = xhr.response
+        for(let dt of history){
+            add_row(dt)
+            total_count += dt["total"]
+        }
+        document.getElementById("amount").innerHTML = total_count.toFixed(2)
+    }
+    else{
+        console.log("Something Is Wrong")
     }
 }
 xhr.open("POST", url + "/pharmacies/invoices")
 xhr.setRequestHeader("Authorization", user_data["token"])
 xhr.send()
-
-var tbody = document.getElementsByTagName("tbody")[0]
-let history = [
-    {
-        "dt": "22-8-12 (14:15:17)",
-        "medicines": [
-            {
-                "medName": "Napa",
-                "medQty": 10,
-                "total": 10
-            },
-            {
-                "medName": "Alatrol",
-                "medQty": 20,
-                "total": 60
-            }
-        ],
-        "total": 70
-    },
-    {
-        "dt": "22-8-69 (14:15:17)",
-        "medicines": [
-            {
-                "medName": "Napa",
-                "medQty": 20,
-                "total": 20
-            },
-            {
-                "medName": "Alatrol",
-                "medQty": 10,
-                "total": 30
-            }
-        ],
-        "total": 50
-    }
-]
-for(let dt of history){
-    add_row(dt)
-}
 
 const ctx_1 = document.getElementById("chart_1").getContext("2d")
 const ctx_2 = document.getElementById("chart_2").getContext("2d")
@@ -116,7 +90,7 @@ function add_row(_data_available){
     var cell_3 = row.insertCell(2)
 
     cell_1.innerHTML = _data_available["dt"]
-    cell_2.innerHTML = _data_available["total"]
+    cell_2.innerHTML = _data_available["total"].toFixed(2)
     cell_3.innerHTML = `<button type="button" class="btn" onclick="print(this)">Click</button>`
 }
 function log_out(event){
@@ -133,10 +107,10 @@ function print(obj){
             if(id == data["dt"]){
                 let html = ""
                 for(let med of data["medicines"]){
-                    html += `<div class="row"><label>${med["medName"]}</label><label>${med["medQty"]}</label><label>${med["total"]} BDT</label></div>`
+                    html += `<div class="row"><label>${med["medName"]}</label><label>${med["medQty"]}</label><label>${med["total"].toFixed(2)} BDT</label></div>`
                 }
                 document.getElementById("body").innerHTML = html
-                document.getElementById("total").innerHTML = data["total"] + " BDT"
+                document.getElementById("total").innerHTML = data["total"].toFixed(2) + " BDT"
             }
         }
         printJS({
