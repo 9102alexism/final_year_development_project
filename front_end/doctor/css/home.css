@@ -137,6 +137,8 @@ thead{
 }
 tbody{
     background: #fff;
+    max-height: 50vh;
+    overflow-y: auto;
 }
 tbody tr{
     border-bottom: 1px solid #dddddd;

@@ -57,7 +57,7 @@ function print(obj){
                 document.getElementById("p_name").innerHTML = data["patient_name"]
                 document.getElementById("p_gender").innerHTML = "Gender: " + data["gender"]
                 document.getElementById("p_age").innerHTML = "Age: " + data["age"] + " " + data["age_type"]
-                document.getElementById("p_date").innerHTML = "Date: " + data["date"].split("T")[0]
+                document.getElementById("p_date").innerHTML = "Date: " + data["date"].split(" ")[0]
                 let html = ""
                 for(let comp of data["complaint"]){
                     html += "&#8226 " + comp
