@@ -101,16 +101,18 @@ main{
     width: 50%;
 }
 #graph_box{
+    margin-top: 20px;
     width: 100%;
     display: flex;
     gap: 10px;
+    justify-content: center;
 }
 .graph{
     width: 50%;
     height: 50%;
     background-color: #fff;
 }
-button{
+#analysis{
     padding: 10px;
     background: #c8ffe8;
     font-size: 20px;
