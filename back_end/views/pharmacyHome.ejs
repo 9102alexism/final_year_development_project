@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/home.css">
+        <link rel="stylesheet" href="../css/print.css">
+        <title>Home</title>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div id="navbar">
+                    <div class="nv_icon">
+                        <img src="../resources/pharmacy.png">
+                    </div>
+                    <div id="nv_items">
+                        <li class="no_select"><a href="#" class="list_styling">Home</a></li>
+                        <li class="no_select"><a href="point_of_sale.html" class="list_styling">Point Of Sale</a></li>
+                        <li class="no_select"><a href="inventory.html" class="list_styling">Inventory</a></li>
+                    </div>
+                    <div class="nv_icon">
+                        <a href="#" onclick="return log_out(this)"><img src="../resources/log_out.png"></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div id="main_box">
+                    <div id="dashboard">
+                        <div id="item_1">
+                            <label id="amount">0 BDT</label>
+                            <label id="total_sell">Total Sale</label>
+                        </div>
+                    </div>
+                    <div id="history">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Date</td>
+                                    <td>Amount</td>
+                                    <td>Preview</td>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div id="graph_box">
+                        <div class="graph">
+                            <canvas id="chart_1"></canvas>
+                        </div>
+                        <div class="graph">
+                            <canvas id="chart_2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+        <div id="print">
+            <div id="p1">
+                <label id="pn"></label>
+                <label id="pa"></label>
+                <label id="pp"></label>
+            </div>
+            <div id="p2">
+                <div id="head">
+                    <label>Name</label>
+                    <label>Quantity</label>
+                    <label>Price</label>
+                </div>
+                <div id="body"></div>
+            </div>
+            <div id="p3">
+                <label>Total</label>
+                <label></label>
+                <label id="total">0 BDT</label>
+            </div>
+        </div>
+    </body>
+    <script src="../js/chart.min.js"></script>
+    <script src="../js/home.js"></script>
+    <script src="../js/print.min.js"></script>
+</html>

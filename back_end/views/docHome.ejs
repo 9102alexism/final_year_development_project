@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/home.css">
+        <link rel="stylesheet" href="../css/print.css">
+        <title>Home</title>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div id="navbar">
+                    <div id="nv_icon">
+                        <img src="../resources/doctor.png">
+                    </div>
+                    <div id="nv_items">
+                        <li class="no_select"><a href="#" class="list_styling">Home</a></li>
+                        <li class="no_select"><a href="prescription.html" class="list_styling">Prescription</a></li>
+                    </div>
+                    <div id="nv_icon">
+                        <a href="#"><img id="l_out" src="../resources/log_out.png"></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div id="main_box">
+                    <div id="dashboard">
+                        <div id="item_1">
+                            <label id="amount">0</label>
+                            <label id="total_patients" onclick="hulu()">Total Patients</label>
+                        </div>
+                    </div>
+                    <div id="history">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Date</td>
+                                    <td>Patient Name</td>
+                                    <td>Preview</td>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+        <div id="print">
+            <div id="p1">
+                <label id="dn"></label>
+                <label id="dd"></label>
+                <label id="ds"></label>
+                <label id="dr"></label>
+                <label id="drn"></label>
+            </div>
+            <div id="p2">
+                <div id="head">
+                    <label id="p_name"></label>
+                    <label id="p_gender"></label>
+                    <label id="p_age"></label>
+                    <label id="p_date"></label>
+                </div>
+            </div>
+            <div id="body">
+                <div id="p3">
+                    <div id="block_1">
+                        <label>Chief Complaint</label>
+                        <div id="comp" disabled></div>
+                    </div>
+                    <div id="block_2">
+                        <label>On Examinations</label>
+                        <div id="exam"></div>
+                    </div>
+                    <div id="block_3">
+                        <label>Diagnosis</label>
+                        <div id="diag"></div>
+                    </div>
+                    <div id="block_4">
+                        <label>Investigation</label>
+                        <div id="inv"></div>
+                    </div>
+                </div>
+                <div id="p4">
+                    <div id="first">
+                        <label>Rx.</label>
+                    </div>
+                    <div id="middle">
+                        <label>Advices</label>
+                        <div id="adv"></div>
+                    </div>
+                    <div id="last">
+                        <label>Follow-Up</label>
+                    </div>
+                    <div id="qr_block">
+                        <div id="qrcode"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="../js/home.js"></script>
+    <script src="../js/print.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/qrcode.js"></script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../public/administration/css/add_user.css">
+        <title>Add User</title>
+    </head>
+    <body>
+        <header>
+            <img src="../public/administration/resources/admin.png">
+            <nav>
+                <ul><a href="#">Home</a></ul>
+                <ul><a href="#">Add User</a></ul>
+                <ul><a href="#">Log Out</a></ul>
+            </nav>
+        </header>
+        <main>
+            <div id="upper_section">
+                <select name="user_type">
+                    <option value="" disabled hidden selected>Select User Type</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="pharmacy">Pharmacy</option>
+                    <option value="pharmaceutical">Pharmaceutical</option>
+                </select>
+            </div>
+            <div id="lower_section">
+                <form>
+                    <div id="doctor_form">
+                        <input type="text" name="name" placeholder="Doctor's Name" required>
+                        <input type="text" name="department" placeholder="Department" required>
+                        <input type="text" name="institute" placeholder="Institute" required>
+                        <input type="text" name="role" placeholder="Role" required>
+                        <textarea name="degree" placeholder="Degree" required></textarea>
+                        <textarea name="specialized_fields" placeholder="Specialized Fields" required></textarea>
+                        <input type="text" name="reg_num" placeholder="Registration Number" required>
+                        <textarea name="address" placeholder="Address" required></textarea>
+                        <textarea name="visiting_hour" placeholder="Visiting Hour" required></textarea>
+                        <input type="text" name="off_day" placeholder="Off Day" required>
+                        <input type="text" name="phone" placeholder="Phone" required>
+                        <input type="email" name="user_id" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div id="pharmacy_form">
+                        <input type="text" name="name" placeholder="Pharmacy Name" required>
+                        <textarea name="address" placeholder="Address" required></textarea>
+                        <input type="text" name="e_tin" placeholder="E-Tin" required>
+                        <input type="text" name="operation_hour" placeholder="Operation Hour" required>
+                        <input type="text" name="phone" placeholder="Phone" required>
+                        <input type="text" name="zone" placeholder="Zone" required>
+                        <input type="email" name="user_id" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div id="pharmaceutical_form">
+                        <input type="text" name="name" placeholder="Company Name" required>
+                        <textarea name="address" placeholder="Address" required></textarea>
+                        <input type="text" name="phone" placeholder="Phone" required>
+                        <input type="email" name="user_id" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                </form>
+                <button type="submit">Submit</button>
+            </div>
+        </main>
+        <footer></footer>
+    </body>
+    <script src="../public/administration/js/add_user.js"></script>
+</html>

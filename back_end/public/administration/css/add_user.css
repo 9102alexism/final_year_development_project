@@ -1,0 +1,169 @@
+@font-face{
+    font-family: "monoid";
+    src: url("../resources/monoid.ttf");
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: monoid;
+}
+body{
+    display: flex;
+}
+header{
+    width: 20%;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    gap: 20px;
+}
+img{
+    margin: 0 auto;
+    padding: 20px;
+    width: 50px;
+    height: 50px;
+}
+nav{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    margin-left: 30%;
+    gap: 20px;
+}
+ul{
+    width: 100%;
+    text-align: end;
+    list-style: none;
+    border: 1px solid #84ff917a;
+    border-right: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+ul > a{
+    box-sizing: border-box;
+    display: inline-block;
+    width: inherit;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+main{
+    width: 80%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #e6e6e6;
+}
+#upper_section{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#upper_section > select{
+    padding: 10px;
+    border-radius: 76px;
+    background: #e6e6e6;
+    box-shadow: 5px 5px 10px #c1c1c1, -5px -5px 10px #ffffff;
+}
+#upper_section > select:active{
+    background: linear-gradient(145deg, #cfcfcf, #f6f6f6);
+    box-shadow:  5px 5px 10px #c1c1c1, -5px -5px 10px #ffffff;
+}
+#lower_section{
+    height: calc(100% - 20vh);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#doctor_form, #pharmacy_form, #pharmaceutical_form{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: auto;
+    gap: 10px;
+    visibility: hidden;
+    display: none;
+}
+#doctor_form > input, #doctor_form > textarea, #pharmacy_form > input, #pharmacy_form > textarea, #pharmaceutical_form > input, #pharmaceutical_form > textarea{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background: #e6e6e6;
+    border-radius: 25px;
+    box-shadow: inset 5px 5px 10px #c1c1c1, inset -5px -5px 10px #ffffff;
+}
+#doctor_form > input:focus, #doctor_form > textarea:focus, #pharmacy_form > input:focus, #pharmacy_form > textarea:focus, #pharmaceutical_form > input:focus, #pharmaceutical_form > textarea:focus{
+    outline: none;
+}
+#doctor_form textarea, #pharmacy_form textarea, #pharmaceutical_form > textarea{
+    resize: none;
+    overflow-y: auto;
+}
+button{
+    padding: 10px;
+    border-radius: 76px;
+    background: #e6e6e6;
+    box-shadow:  5px 5px 10px #c1c1c1, -5px -5px 10px #ffffff;
+    visibility: hidden;
+    display: none;
+}
+button:active{
+    box-shadow: inset 5px 5px 10px #c1c1c1, inset -5px -5px 10px #ffffff;
+}
+@media only screen and (max-device-width: 800px){
+    *{
+        font-size: 13px;
+    }
+    ::placeholder{
+        font-size: 10px;
+    }
+    nav{
+        margin-left: 10%;
+    }
+    #doctor_form, #pharmacy_form, #pharmaceutical_form{
+        width: 70%;
+    }
+}
+@media only screen and (max-device-width: 1000px){
+    *{
+        font-size: 13px;
+    }
+    ::placeholder{
+        font-size: 10px;
+    }
+}
+@media only screen and (max-width: 800px){
+    *{
+        font-size: 13px;
+    }
+    ::placeholder{
+        font-size: 10px;
+    }
+    nav{
+        margin-left: 10%;
+    }
+    #doctor_form, #pharmacy_form, #pharmaceutical_form{
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 1000px){
+    *{
+        font-size: 13px;
+    }
+    ::placeholder{
+        font-size: 10px;
+    }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/add_batch.css">
+        <title>Add Product</title>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div id="navbar">
+                    <div id="nv_icon">
+                        <img src="../resources/pharmaceutical.png">
+                    </div>
+                    <div id="nv_items">
+                        <li class="no_select"><a href="#" class="list_styling">Home</a></li>
+                        <li class="no_select"><a href="products.html" class="list_styling">Products</a></li>
+                        <li class="no_select"><a href="add_product.html" class="list_styling">Add Product</a></li>
+                        <li class="no_select"><a href="#" class="list_styling">Add Batch</a></li>
+                    </div>
+                    <div id="nv_icon">
+                        <a href="#" onclick="return log_out(this)"><img src="../resources/log_out.png"></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div id="content">
+                    <form>
+                        <input type="text" name="med_id" placeholder="Medicine ID" required>
+                        <input type="text" name="batch_num" placeholder="Batch No." required>
+                        <input type="number" name="count" placeholder="Count" required>
+                        <input type="text" name="zone" placeholder="Zone" required>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </body>
+    <script src="../js/add_batch.js"></script>
+</html>
